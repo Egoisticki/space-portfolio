@@ -1,0 +1,237 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Google Fonts imported via index.html ─── */
+
+:root {
+  --void: #02020f;
+  --deep-space: #050518;
+  --nebula-dark: #0a0a2e;
+  --cyan: #00f5ff;
+  --cyan-dim: #00a8b5;
+  --violet: #7b2fff;
+  --violet-bright: #a855f7;
+  --amber: #ff9a3c;
+  --star-white: #e8f4ff;
+  --text-primary: #c8d8f0;
+  --text-dim: #5a7a9a;
+  --card-bg: rgba(8, 12, 40, 0.7);
+  --card-border: rgba(0, 245, 255, 0.15);
+  --glow-cyan: 0 0 20px rgba(0, 245, 255, 0.4), 0 0 60px rgba(0, 245, 255, 0.1);
+  --glow-violet: 0 0 20px rgba(123, 47, 255, 0.4), 0 0 60px rgba(123, 47, 255, 0.1);
+  --glow-amber: 0 0 20px rgba(255, 154, 60, 0.4), 0 0 60px rgba(255, 154, 60, 0.1);
+}
+
+/* ─── Base Reset ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles this */
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--void);
+  color: var(--text-primary);
+  font-family: 'Rajdhani', sans-serif;
+  cursor: none;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--cyan-dim);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cyan);
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: rgba(0, 245, 255, 0.25);
+  color: var(--star-white);
+}
+
+/* ─── Keyframes ─── */
+
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes orbit-reverse {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.3; transform: scale(0.6); }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0px) rotate(-5deg); }
+  50%       { transform: translateY(-18px) rotate(5deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(0, 245, 255, 0.3), 0 0 30px rgba(0, 245, 255, 0.1); }
+  50%       { box-shadow: 0 0 25px rgba(0, 245, 255, 0.7), 0 0 60px rgba(0, 245, 255, 0.3); }
+}
+
+@keyframes pulse-glow-violet {
+  0%, 100% { box-shadow: 0 0 10px rgba(123, 47, 255, 0.3), 0 0 30px rgba(123, 47, 255, 0.1); }
+  50%       { box-shadow: 0 0 25px rgba(123, 47, 255, 0.7), 0 0 60px rgba(123, 47, 255, 0.3); }
+}
+
+@keyframes scan-line {
+  0%   { transform: translateX(-100%); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes draw-line {
+  from { stroke-dashoffset: 1000; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes float-particle {
+  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0.8; }
+  50%  { transform: translateY(-30px) translateX(15px) scale(1.1); opacity: 1; }
+  100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.8; }
+}
+
+@keyframes hud-scan {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes flicker {
+  0%, 95%, 100% { opacity: 1; }
+  96%           { opacity: 0.7; }
+  97%           { opacity: 1; }
+  98%           { opacity: 0.4; }
+}
+
+@keyframes typewriter-blink {
+  0%, 100% { border-color: var(--cyan); }
+  50%       { border-color: transparent; }
+}
+
+@keyframes orbit-ring-pulse {
+  0%, 100% { stroke-opacity: 0.3; }
+  50%       { stroke-opacity: 0.7; }
+}
+
+@keyframes shooting-star {
+  0%   { transform: translateX(0) translateY(0) scaleX(0); opacity: 0; }
+  5%   { opacity: 1; scaleX: 1; }
+  100% { transform: translateX(-600px) translateY(300px) scaleX(1); opacity: 0; }
+}
+
+@keyframes nebula-drift {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(30px, -20px) scale(1.05); }
+  66%  { transform: translate(-20px, 10px) scale(0.97); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes countdown-flash {
+  0%   { opacity: 1; transform: scale(1.5); }
+  100% { opacity: 0; transform: scale(3); }
+}
+
+/* ─── Utility Classes ─── */
+
+.font-orbitron { font-family: 'Orbitron', sans-serif; }
+.font-rajdhani { font-family: 'Rajdhani', sans-serif; }
+.font-mono-custom { font-family: 'JetBrains Mono', monospace; }
+
+.text-glow-cyan {
+  text-shadow: 0 0 15px rgba(0, 245, 255, 0.7), 0 0 40px rgba(0, 245, 255, 0.3);
+}
+
+.text-glow-violet {
+  text-shadow: 0 0 15px rgba(123, 47, 255, 0.7), 0 0 40px rgba(123, 47, 255, 0.3);
+}
+
+.text-glow-amber {
+  text-shadow: 0 0 15px rgba(255, 154, 60, 0.7), 0 0 40px rgba(255, 154, 60, 0.3);
+}
+
+.glass-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.animate-orbit {
+  animation: orbit linear infinite;
+}
+
+.animate-orbit-reverse {
+  animation: orbit-reverse linear infinite;
+}
+
+.animate-bob {
+  animation: bob 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+.animate-pulse-glow-violet {
+  animation: pulse-glow-violet 2.5s ease-in-out infinite;
+}
+
+.animate-twinkle {
+  animation: twinkle ease-in-out infinite;
+}
+
+.animate-flicker {
+  animation: flicker 8s ease-in-out infinite;
+}
+
+/* ─── R3F Canvas ─── */
+canvas {
+  display: block;
+}
+
+/* ─── Nav active underline ─── */
+.nav-link-active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan);
+  animation: draw-line 0.3s ease forwards;
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
