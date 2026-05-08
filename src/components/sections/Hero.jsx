@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState, Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { gsap } from 'gsap'
 import StarField from '../three/StarField'
 import Planet from '../three/Planet'
@@ -9,6 +9,7 @@ import HorizonScene from '../effects/HorizonScene'
 import GlowButton from '../ui/GlowButton'
 import { personalInfo } from '../../data/portfolio'
 import { scrollTo } from '../../hooks/useLenis'
+import astronautImg from '../../../public/astronaut-hero.png'
 
 // Typewriter hook
 function useTypewriter(phrases, speed = 80, pause = 2000) {
@@ -66,6 +67,138 @@ function AnimatedText({ text, delay = 0, className = '', glowClass = '' }) {
   )
 }
 
+// Floating astronaut with layered glow effects
+function FloatingAstronaut() {
+  const shouldReduceMotion = useReducedMotion()
+
+  return (
+    <motion.div
+      className="absolute right-[2vw] xl:right-[6vw] top-1/2 -translate-y-[55%] pointer-events-none select-none hidden lg:block"
+      initial={{ opacity: 0, scale: 0.6, x: 60 }}
+      animate={{ opacity: 1, scale: 1, x: 0 }}
+      transition={{ delay: 2, duration: 1, type: 'spring', stiffness: 80, damping: 14 }}
+    >
+      {/* Outer ambient glow ring */}
+      <motion.div
+        className="absolute inset-0 rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle at 45% 50%, rgba(123,47,255,0.18) 0%, rgba(0,245,255,0.08) 45%, transparent 70%)',
+          transform: 'scale(1.5)',
+          filter: 'blur(18px)',
+        }}
+        animate={shouldReduceMotion ? {} : {
+          opacity: [0.6, 1, 0.6],
+          scale: [1.4, 1.6, 1.4],
+        }}
+        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+      />
+
+      {/* Floating + bob animation wrapper */}
+      <motion.div
+        animate={shouldReduceMotion ? {} : {
+          y: [0, -18, 0],
+          rotate: [-2, 2, -2],
+        }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+        style={{ filter: 'drop-shadow(0 0 24px rgba(123,47,255,0.5)) drop-shadow(0 0 48px rgba(0,245,255,0.2))' }}
+      >
+        <img
+          src={astronautImg}
+          alt="Astronaut"
+          className="w-[220px] xl:w-[280px] 2xl:w-[320px] object-contain relative z-10"
+          draggable={false}
+          style={{
+            filter: 'drop-shadow(0 0 12px rgba(0,245,255,0.3))',
+          }}
+        />
+      </motion.div>
+
+      {/* Orbiting particle ring around astronaut */}
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
+        style={{
+          width: 260,
+          height: 260,
+          border: '1px dashed rgba(0,245,255,0.12)',
+        }}
+        animate={shouldReduceMotion ? {} : { rotate: 360 }}
+        transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
+      >
+        {/* Orbit dot */}
+        <div
+          className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full"
+          style={{ background: '#00f5ff', boxShadow: '0 0 8px #00f5ff' }}
+        />
+      </motion.div>
+
+      {/* Second counter-orbit ring */}
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
+        style={{
+          width: 310,
+          height: 310,
+          border: '1px dashed rgba(123,47,255,0.1)',
+        }}
+        animate={shouldReduceMotion ? {} : { rotate: -360 }}
+        transition={{ duration: 26, repeat: Infinity, ease: 'linear' }}
+      >
+        <div
+          className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full"
+          style={{ background: '#a855f7', boxShadow: '0 0 6px #a855f7' }}
+        />
+      </motion.div>
+
+      {/* HUD bracket overlay */}
+      <div className="absolute inset-4 pointer-events-none">
+        {/* Top-left */}
+        <motion.div
+          className="absolute top-0 left-0 w-5 h-5 border-t border-l border-cyan/30"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 2.5, duration: 0.3 }}
+        />
+        {/* Top-right */}
+        <motion.div
+          className="absolute top-0 right-0 w-5 h-5 border-t border-r border-cyan/30"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 2.6, duration: 0.3 }}
+        />
+        {/* Bottom-left */}
+        <motion.div
+          className="absolute bottom-0 left-0 w-5 h-5 border-b border-l border-cyan/30"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 2.7, duration: 0.3 }}
+        />
+        {/* Bottom-right */}
+        <motion.div
+          className="absolute bottom-0 right-0 w-5 h-5 border-b border-r border-cyan/30"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 2.8, duration: 0.3 }}
+        />
+      </div>
+
+      {/* HUD label */}
+      <motion.div
+        className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap"
+        initial={{ opacity: 0, y: 6 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 3, duration: 0.5 }}
+      >
+        <span className="font-mono-custom text-[10px] text-cyan/40 tracking-[0.3em] uppercase">
+          ◈ UNIT-01 // DEPLOYED
+        </span>
+      </motion.div>
+    </motion.div>
+  )
+}
+
 export default function Hero() {
   const contentRef = useRef(null)
   const greetingRef = useRef(null)
@@ -73,26 +206,16 @@ export default function Hero() {
   const [ready, setReady] = useState(false)
 
   useEffect(() => {
-    // Small delay to let fonts load
     const t = setTimeout(() => setReady(true), 200)
     return () => clearTimeout(t)
   }, [])
 
   useEffect(() => {
     if (!ready || !greetingRef.current) return
-
-    // GSAP orchestration for greeting line
     gsap.fromTo(
       greetingRef.current,
       { opacity: 0, y: 20, letterSpacing: '0.8em' },
-      {
-        opacity: 1,
-        y: 0,
-        letterSpacing: '0.4em',
-        duration: 1.2,
-        ease: 'power3.out',
-        delay: 0.1,
-      }
+      { opacity: 1, y: 0, letterSpacing: '0.4em', duration: 1.2, ease: 'power3.out', delay: 0.1 }
     )
   }, [ready])
 
@@ -111,11 +234,9 @@ export default function Hero() {
         >
           <color attach="background" args={['#02020f']} />
           <fog attach="fog" args={['#02020f', 30, 100]} />
-
           <ambientLight intensity={0.05} />
           <pointLight position={[-5, 3, 2]} color="#7b2fff" intensity={3} />
           <pointLight position={[5, -2, 0]} color="#00f5ff" intensity={1.5} />
-
           <Suspense fallback={null}>
             <StarField count={8000} />
             <Planet position={[3.8, -0.3, -1]} />
@@ -131,7 +252,7 @@ export default function Hero() {
       <div
         className="absolute inset-0 z-1 pointer-events-none"
         style={{
-          background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px)',
+          background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.025) 2px, rgba(0,0,0,0.025) 4px)',
         }}
       />
 
@@ -163,12 +284,14 @@ export default function Hero() {
         </p>
       </motion.div>
 
+      {/* ── Floating Astronaut (image) ── */}
+      <FloatingAstronaut />
+
       {/* ── Hero Content ── */}
       <div
         ref={contentRef}
         className="relative z-10 flex flex-col items-center text-center px-6 pt-20 pb-40 max-w-6xl mx-auto"
       >
-
         {/* Greeting */}
         <motion.p
           ref={greetingRef}
@@ -183,13 +306,13 @@ export default function Hero() {
         {ready && (
           <h1 className="font-orbitron font-black leading-none select-none mb-4">
             <div className="text-[clamp(3rem,10vw,8rem)] text-glow-cyan text-cyan">
-              <AnimatedText text="ALEX" delay={0.4} />
+              <AnimatedText text="MOHAMED" delay={0.4} />
             </div>
             <div
               className="text-[clamp(3rem,10vw,8rem)] text-star-white"
               style={{ textShadow: '0 0 40px rgba(200, 216, 240, 0.2)' }}
             >
-              <AnimatedText text="NOVA" delay={0.7} />
+              <AnimatedText text="HAMIDAT" delay={0.7} />
             </div>
           </h1>
         )}
@@ -257,18 +380,6 @@ export default function Hero() {
             VIEW PROJECTS
           </GlowButton>
         </motion.div>
-
-        {/* Floating astronaut */}
-        <motion.div
-          className="absolute right-[5vw] top-1/2 -translate-y-1/2 text-[5rem] pointer-events-none select-none hidden lg:block"
-          animate-bob
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 2, type: 'spring', stiffness: 100, damping: 10 }}
-          style={{ animation: 'bob 5s ease-in-out infinite', filter: 'drop-shadow(0 0 20px rgba(0,245,255,0.3))' }}
-        >
-          👨‍🚀
-        </motion.div>
       </div>
 
       {/* ── Scroll indicator ── */}
@@ -287,12 +398,7 @@ export default function Hero() {
               key={i}
               className="w-px h-2 bg-cyan/60"
               animate={{ opacity: [0.2, 1, 0.2], scaleY: [0.8, 1.2, 0.8] }}
-              transition={{
-                duration: 1.2,
-                repeat: Infinity,
-                delay: i * 0.2,
-                ease: 'easeInOut',
-              }}
+              transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.2, ease: 'easeInOut' }}
             />
           ))}
         </div>

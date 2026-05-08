@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Google Fonts imported via index.html ─── */
+/* ─── Google Fonts ─── */
+/* Loaded via index.html: Orbitron, Rajdhani, JetBrains Mono */
 
+/* ─── CSS Variables ─── */
 :root {
   --void: #02020f;
   --deep-space: #050518;
@@ -33,6 +35,8 @@
 html {
   scroll-behavior: auto; /* Lenis handles this */
   overflow-x: hidden;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -43,27 +47,36 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Perf hint for compositor */
+  will-change: scroll-position;
+}
+
+/* Restore cursor on touch devices */
+@media (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
 }
 
 /* ─── Custom Scrollbar ─── */
-::-webkit-scrollbar {
-  width: 4px;
-}
-::-webkit-scrollbar-track {
-  background: var(--void);
-}
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--void); }
 ::-webkit-scrollbar-thumb {
-  background: var(--cyan-dim);
+  background: linear-gradient(180deg, var(--cyan-dim), var(--violet));
   border-radius: 2px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: var(--cyan);
-}
+::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
 
 /* ─── Selection ─── */
 ::selection {
-  background: rgba(0, 245, 255, 0.25);
+  background: rgba(0, 245, 255, 0.2);
   color: var(--star-white);
+}
+
+/* ─── Focus visible (accessibility) ─── */
+:focus-visible {
+  outline: 1px solid var(--cyan);
+  outline-offset: 3px;
 }
 
 /* ─── Keyframes ─── */
@@ -84,25 +97,33 @@ body {
 }
 
 @keyframes bob {
-  0%, 100% { transform: translateY(0px) rotate(-5deg); }
-  50%       { transform: translateY(-18px) rotate(5deg); }
+  0%, 100% { transform: translateY(0px) rotate(-3deg); }
+  50%       { transform: translateY(-16px) rotate(3deg); }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 10px rgba(0, 245, 255, 0.3), 0 0 30px rgba(0, 245, 255, 0.1); }
-  50%       { box-shadow: 0 0 25px rgba(0, 245, 255, 0.7), 0 0 60px rgba(0, 245, 255, 0.3); }
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(0, 245, 255, 0.3), 0 0 20px rgba(0, 245, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.7), 0 0 50px rgba(0, 245, 255, 0.3);
+  }
 }
 
 @keyframes pulse-glow-violet {
-  0%, 100% { box-shadow: 0 0 10px rgba(123, 47, 255, 0.3), 0 0 30px rgba(123, 47, 255, 0.1); }
-  50%       { box-shadow: 0 0 25px rgba(123, 47, 255, 0.7), 0 0 60px rgba(123, 47, 255, 0.3); }
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(123, 47, 255, 0.3), 0 0 20px rgba(123, 47, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(123, 47, 255, 0.7), 0 0 50px rgba(123, 47, 255, 0.3);
+  }
 }
 
 @keyframes scan-line {
   0%   { transform: translateX(-100%); opacity: 0; }
   10%  { opacity: 1; }
   90%  { opacity: 1; }
-  100% { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(2000%); opacity: 0; }
 }
 
 @keyframes draw-line {
@@ -111,67 +132,64 @@ body {
 }
 
 @keyframes float-particle {
-  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0.8; }
-  50%  { transform: translateY(-30px) translateX(15px) scale(1.1); opacity: 1; }
-  100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.8; }
-}
-
-@keyframes hud-scan {
-  0%   { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
-}
-
-@keyframes flicker {
-  0%, 95%, 100% { opacity: 1; }
-  96%           { opacity: 0.7; }
-  97%           { opacity: 1; }
-  98%           { opacity: 0.4; }
-}
-
-@keyframes typewriter-blink {
-  0%, 100% { border-color: var(--cyan); }
-  50%       { border-color: transparent; }
-}
-
-@keyframes orbit-ring-pulse {
-  0%, 100% { stroke-opacity: 0.3; }
-  50%       { stroke-opacity: 0.7; }
-}
-
-@keyframes shooting-star {
-  0%   { transform: translateX(0) translateY(0) scaleX(0); opacity: 0; }
-  5%   { opacity: 1; scaleX: 1; }
-  100% { transform: translateX(-600px) translateY(300px) scaleX(1); opacity: 0; }
+  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0.6; }
+  33%  { transform: translateY(-20px) translateX(10px) scale(1.1); opacity: 1; }
+  66%  { transform: translateY(-10px) translateX(-8px) scale(0.9); opacity: 0.7; }
+  100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.6; }
 }
 
 @keyframes nebula-drift {
   0%   { transform: translate(0, 0) scale(1); }
-  33%  { transform: translate(30px, -20px) scale(1.05); }
-  66%  { transform: translate(-20px, 10px) scale(0.97); }
+  33%  { transform: translate(25px, -15px) scale(1.04); }
+  66%  { transform: translate(-15px, 8px) scale(0.97); }
   100% { transform: translate(0, 0) scale(1); }
 }
 
-@keyframes countdown-flash {
-  0%   { opacity: 1; transform: scale(1.5); }
-  100% { opacity: 0; transform: scale(3); }
+@keyframes flicker {
+  0%, 94%, 100% { opacity: 1; }
+  95%  { opacity: 0.6; }
+  96%  { opacity: 1; }
+  97%  { opacity: 0.3; }
+  98%  { opacity: 1; }
+}
+
+@keyframes hud-scan {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  5%   { opacity: 0.6; }
+  95%  { opacity: 0.6; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes shooting-star-trail {
+  0%   { width: 0; opacity: 0; }
+  10%  { opacity: 1; }
+  100% { width: 160px; opacity: 0; }
 }
 
 /* ─── Utility Classes ─── */
 
-.font-orbitron { font-family: 'Orbitron', sans-serif; }
-.font-rajdhani { font-family: 'Rajdhani', sans-serif; }
+.font-orbitron   { font-family: 'Orbitron', sans-serif; }
+.font-rajdhani   { font-family: 'Rajdhani', sans-serif; }
 .font-mono-custom { font-family: 'JetBrains Mono', monospace; }
 
 .text-glow-cyan {
-  text-shadow: 0 0 15px rgba(0, 245, 255, 0.7), 0 0 40px rgba(0, 245, 255, 0.3);
+  text-shadow:
+    0 0 10px rgba(0, 245, 255, 0.8),
+    0 0 30px rgba(0, 245, 255, 0.4),
+    0 0 60px rgba(0, 245, 255, 0.15);
 }
 
 .text-glow-violet {
-  text-shadow: 0 0 15px rgba(123, 47, 255, 0.7), 0 0 40px rgba(123, 47, 255, 0.3);
+  text-shadow:
+    0 0 10px rgba(123, 47, 255, 0.8),
+    0 0 30px rgba(123, 47, 255, 0.4),
+    0 0 60px rgba(123, 47, 255, 0.15);
 }
 
 .text-glow-amber {
-  text-shadow: 0 0 15px rgba(255, 154, 60, 0.7), 0 0 40px rgba(255, 154, 60, 0.3);
+  text-shadow:
+    0 0 10px rgba(255, 154, 60, 0.8),
+    0 0 30px rgba(255, 154, 60, 0.4);
 }
 
 .glass-card {
@@ -181,37 +199,28 @@ body {
   -webkit-backdrop-filter: blur(12px);
 }
 
-.animate-orbit {
-  animation: orbit linear infinite;
-}
-
-.animate-orbit-reverse {
-  animation: orbit-reverse linear infinite;
-}
-
-.animate-bob {
-  animation: bob 4s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2.5s ease-in-out infinite;
-}
-
-.animate-pulse-glow-violet {
-  animation: pulse-glow-violet 2.5s ease-in-out infinite;
-}
-
-.animate-twinkle {
-  animation: twinkle ease-in-out infinite;
-}
-
-.animate-flicker {
-  animation: flicker 8s ease-in-out infinite;
-}
+/* Animation utilities */
+.animate-orbit          { animation: orbit linear infinite; }
+.animate-orbit-reverse  { animation: orbit-reverse linear infinite; }
+.animate-bob            { animation: bob 4.5s ease-in-out infinite; }
+.animate-pulse-glow     { animation: pulse-glow 2.5s ease-in-out infinite; }
+.animate-pulse-glow-violet { animation: pulse-glow-violet 2.5s ease-in-out infinite; }
+.animate-twinkle        { animation: twinkle ease-in-out infinite; }
+.animate-flicker        { animation: flicker 9s ease-in-out infinite; }
+.animate-nebula-drift   { animation: nebula-drift ease-in-out infinite; }
 
 /* ─── R3F Canvas ─── */
 canvas {
   display: block;
+  /* GPU compositing hint */
+  will-change: transform;
+}
+
+/* ─── Prevent layout shift from canvas ─── */
+.r3f-canvas-container {
+  position: absolute;
+  inset: 0;
+  contain: strict;
 }
 
 /* ─── Nav active underline ─── */
@@ -224,14 +233,44 @@ canvas {
   height: 1px;
   background: var(--cyan);
   box-shadow: 0 0 8px var(--cyan);
-  animation: draw-line 0.3s ease forwards;
 }
 
-/* ─── Reduced motion ─── */
+/* ─── Scrollbar for webkit inside modals ─── */
+.modal-scroll::-webkit-scrollbar { width: 2px; }
+.modal-scroll::-webkit-scrollbar-thumb { background: var(--cyan-dim); }
+
+/* ─── Performance: compositor layers for animated elements ─── */
+.hw-accelerated {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* ─── Reduced Motion ─── */
+/* 
+  Respects user's OS-level "reduce motion" preference.
+  All CSS animations are disabled; Framer Motion respects
+  useReducedMotion() hook which is used throughout the app.
+*/
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
+
+  /* Keep essential opacity transitions but kill movement */
+  .glass-card,
+  .font-orbitron,
+  .font-mono-custom {
+    transition: opacity 0.2s ease !important;
+  }
+}
+
+/* ─── Print ─── */
+@media print {
+  body { background: white; color: black; cursor: auto; }
+  canvas, .fixed { display: none !important; }
 }
