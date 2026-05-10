@@ -16,33 +16,26 @@ export default function Projects() {
   const handleNavigate = (project) => setSelectedProject(project)
 
   return (
-    <section id="projects" className="relative py-32 px-6 overflow-hidden">
-
+    <section
+      id="projects"
+      className="relative py-32 px-6 overflow-hidden"
+      style={{ background: '#02020f' }}
+    >
       {/* ── Asteroid belt canvas — full-bleed underlay ── */}
       <div className="absolute inset-0 pointer-events-none z-0 opacity-70">
         <Canvas
           gl={{ antialias: false, alpha: true }}
           camera={{ fov: 55, near: 0.1, far: 100, position: [0, 0, 5] }}
-          style={{ position: 'absolute', inset: 0 }}
+          style={{ position: 'absolute', inset: 0, background: 'transparent' }}
           dpr={Math.min(window.devicePixelRatio, 1.5)}
           frameloop="demand"
         >
-          <color attach="background" args={['transparent']} />
+          <color attach="background" args={['#02020f']} />
           <Suspense fallback={null}>
             <AsteroidBelt count={24} />
           </Suspense>
         </Canvas>
       </div>
-
-      {/* ── Background grid ── */}
-      <div
-        className="absolute inset-0 opacity-[0.02] pointer-events-none"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(0,245,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,245,255,1) 1px, transparent 1px)',
-          backgroundSize: '50px 50px',
-        }}
-      />
 
       {/* ── Nebula blobs ── */}
       <div

@@ -9,7 +9,7 @@ import HorizonScene from '../effects/HorizonScene'
 import GlowButton from '../ui/GlowButton'
 import { personalInfo } from '../../data/portfolio'
 import { scrollTo } from '../../hooks/useLenis'
-import astronautImg from '../../../public/astronaut-hero.png'
+import astronautImg from '../../../assets/astronaut-hero.png'
 
 // Typewriter hook
 function useTypewriter(phrases, speed = 80, pause = 2000) {
