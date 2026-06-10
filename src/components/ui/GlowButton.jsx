@@ -9,65 +9,35 @@ export default function GlowButton({
   ...props
 }) {
   const isPrimary = variant === 'primary'
-  const isGhost = variant === 'ghost'
 
   return (
     <motion.button
       onClick={onClick}
       className={`
-        relative inline-flex items-center gap-3 px-8 py-3.5
-        font-orbitron text-sm font-semibold tracking-widest
-        transition-all duration-300 overflow-hidden group
+        group relative inline-flex min-h-12 items-center justify-center gap-2.5 overflow-hidden rounded-full
+        px-6 py-3 text-sm font-semibold text-star-white transition duration-300
+        focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-cyan
         ${isPrimary
-          ? 'bg-transparent border border-cyan/50 text-cyan hover:border-cyan'
-          : 'bg-transparent border border-violet/40 text-violet-bright hover:border-violet-bright'
+          ? 'border border-white/15 bg-violet text-white shadow-inner-light'
+          : 'border border-white/12 bg-white/[0.035] text-text-primary backdrop-blur-xl hover:bg-white/[0.07]'
         }
         ${className}
       `}
-      style={{
-        clipPath: 'polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)',
-      }}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.97 }}
+      whileHover={{ y: -2 }}
+      whileTap={{ scale: 0.985 }}
       {...props}
     >
-      {/* Glow background on hover */}
-      <motion.span
+      <span
         className={`
-          absolute inset-0 opacity-0 group-hover:opacity-100
-          transition-opacity duration-300
+          absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100
           ${isPrimary
-            ? 'bg-gradient-to-r from-cyan/10 via-cyan/5 to-transparent'
-            : 'bg-gradient-to-r from-violet/10 via-violet/5 to-transparent'
+            ? 'bg-[radial-gradient(circle_at_30%_0%,rgba(255,255,255,0.26),transparent_38%),linear-gradient(90deg,rgba(139,92,246,1),rgba(34,211,238,0.72))]'
+            : 'bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.10),transparent_46%)]'
           }
         `}
       />
-
-      {/* Scan line on hover */}
-      <span
-        className="absolute inset-0 opacity-0 group-hover:opacity-100"
-        style={{ overflow: 'hidden' }}
-      >
-        <span
-          className={`absolute top-0 bottom-0 w-0.5 ${isPrimary ? 'bg-cyan' : 'bg-violet-bright'}`}
-          style={{
-            animation: 'scan-line 1.5s ease-in-out infinite',
-            filter: isPrimary
-              ? 'drop-shadow(0 0 6px #00f5ff)'
-              : 'drop-shadow(0 0 6px #a855f7)',
-          }}
-        />
-      </span>
-
-      {/* Corner decorations */}
-      <span
-        className={`absolute top-0 left-0 w-2 h-2 border-t border-l ${isPrimary ? 'border-cyan' : 'border-violet-bright'}`}
-      />
-      <span
-        className={`absolute bottom-0 right-0 w-2 h-2 border-b border-r ${isPrimary ? 'border-cyan' : 'border-violet-bright'}`}
-      />
-
-      {icon && <span className="relative z-10">{icon}</span>}
+      <span className="absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-white/45 to-transparent" />
+      {icon && <span className="relative z-10 flex h-4 w-4 items-center justify-center">{icon}</span>}
       <span className="relative z-10">{children}</span>
     </motion.button>
   )
