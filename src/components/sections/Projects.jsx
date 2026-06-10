@@ -1,96 +1,54 @@
-// src/components/sections/Projects.jsx
-import { useState, Suspense } from 'react'
-import { Canvas } from '@react-three/fiber'
+import { useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import SectionTitle from '../ui/SectionTitle'
 import ProjectCard from '../ui/ProjectCard'
 import ProjectModal from '../ui/ProjectModal'
-import AsteroidBelt from '../three/AsteroidBelt'
 import { projects } from '../../data/portfolio'
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null)
 
-  const handleOpenModal = (project) => setSelectedProject(project)
-  const handleCloseModal = () => setSelectedProject(null)
-  const handleNavigate = (project) => setSelectedProject(project)
-
   return (
-    <section
-      id="projects"
-      className="relative py-32 px-6 overflow-hidden"
-      style={{ background: '#02020f' }}
-    >
-      {/* ── Asteroid belt canvas — full-bleed underlay ── */}
-      <div className="absolute inset-0 pointer-events-none z-0 opacity-70">
-        <Canvas
-          gl={{ antialias: false, alpha: true }}
-          camera={{ fov: 55, near: 0.1, far: 100, position: [0, 0, 5] }}
-          style={{ position: 'absolute', inset: 0, background: 'transparent' }}
-          dpr={Math.min(window.devicePixelRatio, 1.5)}
-          frameloop="demand"
-        >
-          <color attach="background" args={['#02020f']} />
-          <Suspense fallback={null}>
-            <AsteroidBelt count={24} />
-          </Suspense>
-        </Canvas>
-      </div>
+    <section id="projects" className="relative overflow-hidden py-28 md:py-36">
+      <div className="absolute inset-0 pointer-events-none bg-[#04040d]" />
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_72%_16%,rgba(139,92,246,0.12),transparent_31rem),radial-gradient(circle_at_18%_86%,rgba(34,211,238,0.08),transparent_28rem)]" />
+      <div className="subtle-grid absolute inset-0 opacity-60" />
 
-      {/* ── Nebula blobs ── */}
-      <div
-        className="absolute top-20 right-0 w-[600px] h-[400px] pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse at 80% 50%, rgba(123,47,255,0.06) 0%, transparent 60%)',
-          filter: 'blur(60px)',
-        }}
-      />
-      <div
-        className="absolute bottom-20 left-0 w-[500px] h-[300px] pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse at 20% 50%, rgba(0,245,255,0.05) 0%, transparent 60%)',
-          filter: 'blur(60px)',
-        }}
-      />
-
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="section-shell relative z-10">
         <SectionTitle
-          label="Work"
-          title="MISSION DOSSIERS"
-          subtitle="Deployments catalogued — click any card to open the full briefing"
+          label="Selected Work"
+          title="Case studies for software that ships."
+          subtitle="A curated set of product surfaces: dashboards, SaaS flows, APIs, and portfolio systems shaped around real workflows."
         />
 
-        {/* ── Project grid ── */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((project, i) => (
+        <div className="grid gap-5 md:grid-cols-2">
+          {projects.map((project, index) => (
             <ProjectCard
               key={project.id}
               project={project}
-              index={i}
-              onOpenModal={handleOpenModal}
+              index={index}
+              onOpenModal={setSelectedProject}
             />
           ))}
         </div>
 
-        {/* ── Bottom decorative line ── */}
-        <div className="mt-16 flex items-center gap-4">
-          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-cyan/20 to-transparent" />
-          <span className="font-mono-custom text-[10px] text-text-dim/30 tracking-[0.3em]">
-            {projects.length} MISSIONS LOGGED
+        <div className="mt-14 flex items-center gap-4 text-center">
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-white/5" />
+          <span className="font-mono-custom text-[10px] uppercase tracking-[0.22em] text-text-dim">
+            {projects.length} product builds
           </span>
-          <div className="flex-1 h-px bg-gradient-to-r from-transparent via-cyan/20 to-transparent" />
+          <div className="h-px flex-1 bg-gradient-to-l from-transparent via-white/10 to-white/5" />
         </div>
       </div>
 
-      {/* ── Modal portal ── */}
       <AnimatePresence>
         {selectedProject && (
           <ProjectModal
             key="modal"
             project={selectedProject}
             projects={projects}
-            onClose={handleCloseModal}
-            onNavigate={handleNavigate}
+            onClose={() => setSelectedProject(null)}
+            onNavigate={setSelectedProject}
           />
         )}
       </AnimatePresence>

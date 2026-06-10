@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" fill="none">
+  <defs>
+    <linearGradient id="cursorStroke" x1="5" y1="3" x2="36" y2="38" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9333ea"/>
+      <stop offset="0.48" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <filter id="cursorShadow" x="-10" y="-10" width="62" height="62" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="2" stdDeviation="1.6" flood-color="#03030a" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <path
+    d="M6.2 4.8L35.2 15.1C36.7 15.6 36.8 17.7 35.4 18.3L22.7 24.1L31.2 34.2C31.9 35 31.7 36.2 30.8 36.8L26.1 39.5C25.1 40.1 23.8 39.7 23.2 38.7L15.6 26.5L7.9 34.2C6.6 35.4 4.5 34.5 4.5 32.7V6.7C4.5 5.4 5.7 4.3 6.2 4.8Z"
+    fill="#ffffff"
+    stroke="url(#cursorStroke)"
+    stroke-width="5.5"
+    stroke-linejoin="round"
+    filter="url(#cursorShadow)"
+  />
+  <path
+    d="M8.2 8.3L29.7 15.9L18.3 21.1L26.7 31.3L25.7 31.9L16.1 17.3L8.2 25.2V8.3Z"
+    fill="#ffffff"
+    opacity="0.92"
+  />
+</svg>

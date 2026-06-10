@@ -1,198 +1,336 @@
-// src/data/portfolio.js
-
 export const personalInfo = {
-  name: "Alex Nova",
-  title: "Full Stack Developer",
+  name: "Mohamed Hamidat",
+  initials: "MH",
+  title: "Full-Stack Developer",
   roles: [
-    "Full Stack Developer",
-    "UI Engineer",
-    "React Specialist",
-    "Three.js Artist",
-    "Space Enthusiast",
+    "Full-Stack Developer",
+    "AI-Assisted Product Builder",
+    "SaaS and Web App Builder",
+    "Master SII Student",
   ],
-  bio: `Navigating the digital cosmos for 5+ years, I build interfaces 
-that feel alive. Obsessed with the intersection of performance and aesthetics — 
-turning complex engineering challenges into experiences that feel effortless.`,
-  bioExtra: `When I'm not deploying to production, I'm exploring generative art, 
-contributing to open source, and dreaming up new ways to push the web forward.`,
-  location: "Station Alpha, Earth Orbit",
-  email: "alex@stellardev.io",
-  github: "https://github.com/alexnova",
-  linkedin: "https://linkedin.com/in/alexnova",
-  twitter: "https://twitter.com/alexnova",
+  location: "Algeria / building globally",
+  email: "hello@mohamedhamidat.dev",
+  github: "https://github.com/Egoisticki",
+  linkedin: "https://linkedin.com",
+  twitter: "https://twitter.com",
   stats: [
-    { label: "YEARS ACTIVE", value: 5, suffix: "+" },
-    { label: "PROJECTS SHIPPED", value: 32, suffix: "" },
-    { label: "TECHNOLOGIES", value: 14, suffix: "" },
-    { label: "CUPS OF COFFEE", value: 9847, suffix: "" },
+    { label: "Focus", value: "Full-stack delivery" },
+    { label: "Strength", value: "Clean product UI" },
+    { label: "Workflow", value: "AI-assisted execution" },
+    { label: "Now", value: "Master SII student" },
   ],
-};
+}
+
+export const sectionHeadings = {
+  education: {
+    label: "Education",
+    title: "Academic foundation for intelligent software.",
+    subtitle:
+      "A focused academic path in computer science, intelligent systems, AI, and software engineering.",
+  },
+  experience: {
+    label: "Experience",
+    title: "Practical involvement beyond the classroom.",
+    subtitle:
+      "Roles, projects, and community work that sharpen product judgment, execution, and collaboration.",
+  },
+  blog: {
+    label: "Blog",
+    title: "Notes, events, and certificates.",
+    subtitle:
+      "A social-style feed of what I am learning, building, organizing, and sharing - from certificates and events to short technical notes.",
+  },
+  skills: {
+    label: "Capabilities",
+    title: "The stack is organized around outcomes.",
+    subtitle:
+      "Frontend polish, backend reliability, data structure, AI-assisted execution, and product thinking work together instead of living as separate checklists.",
+  },
+}
+
+export const about = {
+  label: "About",
+  title: "Building useful software with taste, speed, and structure.",
+  subtitle:
+    "A personal, practical approach to turning real workflows into calm, reliable product experiences.",
+  name: "Mohamed Hamidat",
+  role: "Full-stack developer",
+  portrait: "/src/assets/profile.jpg",
+  portraitAlt: "Portrait of Mohamed Hamidat",
+  portraitFallback: "Add src/assets/profile.jpg",
+  portraitChip: "Product Builder",
+  locationChip: "Based in Algeria",
+  description: [
+    "I'm Mohamed Hamidat, a full-stack developer and Master SII student focused on building SaaS platforms, business systems, and AI-assisted tools.",
+    "I care about turning messy real-world workflows into clean, reliable products, from interface design to backend architecture and deployment.",
+    "My work combines product thinking, modern web engineering, and AI-assisted development to move from idea to production faster.",
+  ],
+  chips: [
+    "SaaS Platforms",
+    "Business Systems",
+    "AI Tools",
+    "Frontend Engineering",
+    "Backend APIs",
+    "Product UI",
+  ],
+  principles: [
+    {
+      title: "Product thinking",
+      copy:
+        "I start from the workflow and shape the interface around what people need to do clearly and repeatedly.",
+    },
+    {
+      title: "Full-stack structure",
+      copy:
+        "I connect the UI, API, data model, and deployment decisions so the product feels coherent end to end.",
+    },
+    {
+      title: "AI-assisted speed",
+      copy:
+        "I use AI carefully to explore, prototype, review, and ship faster without losing taste or control.",
+    },
+  ],
+}
 
 export const projects = [
   {
     id: 1,
-    title: "NebulaChat",
+    title: "Business Operations Platform",
     category: "Full Stack",
-    planet: "🔵",
+    planet: "01",
     description:
-      "Real-time messaging platform supporting 10k concurrent users with end-to-end encryption and sub-100ms latency.",
+      "A focused web system for managing records, workflows, and daily business activity from one clean dashboard.",
     longDescription:
-      "NebulaChat was born out of frustration with existing platforms that sacrifice privacy for convenience. Built on a microservices architecture, it handles 10,000 concurrent connections with sub-100ms message delivery via WebSockets and Redis pub/sub. The UI features a dark-glass aesthetic with smooth message animations.",
+      "A full-stack business platform shaped around real operational needs: structured data, clear dashboard views, role-aware workflows, and fast access to the actions people repeat every day.",
     features: [
-      "End-to-end encryption via libsodium",
-      "File & media sharing with CDN delivery",
-      "Voice & video channels via WebRTC",
-      "Custom emoji & reaction system",
-      "Full-text message search",
+      "Dashboard-first interface for scanning business activity",
+      "CRUD workflows with clean forms and predictable state",
+      "API structure ready for authentication and role-based access",
+      "Responsive layouts built for repeated daily use",
     ],
-    tech: ["React", "Socket.io", "Node.js", "Redis", "PostgreSQL"],
-    color: "#00f5ff",
-    gradient: "from-cyan-900 to-blue-950",
+    tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind"],
+    color: "#8b5cf6",
+    gradient: "from-violet-950 via-slate-950 to-cyan-950",
     liveUrl: "#",
     githubUrl: "#",
   },
   {
     id: 2,
-    title: "OrbitDash",
-    category: "Frontend",
-    planet: "🟣",
+    title: "AI-Assisted SaaS Prototype",
+    category: "SaaS",
+    planet: "02",
     description:
-      "Analytics dashboard with real-time data visualization, serving 2M data points with 60fps chart rendering.",
+      "A product prototype that turns a rough service idea into a polished app flow, landing experience, and working interface.",
     longDescription:
-      "OrbitDash transforms raw telemetry data into actionable insights. Built with a custom WebGL-accelerated rendering pipeline on top of D3.js, it handles 2 million data points without breaking a sweat. The dashboard updates in real-time via SSE streams.",
+      "A SaaS-style product prototype focused on speed without sacrificing taste: clear onboarding, practical user flows, reusable components, and AI-assisted iteration for faster build decisions.",
     features: [
-      "WebGL-accelerated chart rendering",
-      "Real-time SSE data streaming",
-      "Custom drag-and-drop layout",
-      "Multi-tenant data isolation",
-      "Export to PDF/CSV/PNG",
+      "Onboarding flow with product-first copy",
+      "Reusable interface components for dashboard screens",
+      "AI-assisted workflow for ideation, copy, and implementation",
+      "Responsive front-end built for quick product validation",
     ],
-    tech: ["Vue", "D3.js", "Python", "FastAPI", "PostgreSQL"],
-    color: "#7b2fff",
-    gradient: "from-violet-900 to-purple-950",
+    tech: ["React", "TypeScript", "Tailwind", "Vite", "Vercel"],
+    color: "#22d3ee",
+    gradient: "from-cyan-950 via-slate-950 to-blue-950",
     liveUrl: "#",
     githubUrl: "#",
   },
   {
     id: 3,
-    title: "StarMap API",
+    title: "API and Data System",
     category: "Backend",
-    planet: "🟠",
+    planet: "03",
     description:
-      "High-performance REST + GraphQL API serving 2M astronomy data points with intelligent caching.",
+      "A reliable backend foundation for product data, authentication-ready routes, validation, and maintainable service logic.",
     longDescription:
-      "StarMap API aggregates data from 12 astronomical databases and exposes it through a unified REST and GraphQL interface. Redis caching with intelligent cache invalidation keeps p99 latency under 50ms for 95% of queries.",
+      "A backend-oriented build that emphasizes clean API boundaries, structured data models, validation, and predictable service logic so front-end products can move quickly without fragile foundations.",
     features: [
-      "REST + GraphQL dual interface",
-      "Redis multi-layer caching",
-      "Rate limiting per API key",
-      "Webhook event subscriptions",
-      "OpenAPI 3.0 documentation",
+      "REST API structure with maintainable route boundaries",
+      "Schema-driven data modeling and validation",
+      "Service layer patterns for clearer business logic",
+      "Environment-ready configuration for deployment",
     ],
-    tech: ["Python", "FastAPI", "Redis", "Docker", "AWS"],
-    color: "#ff9a3c",
-    gradient: "from-orange-900 to-amber-950",
+    tech: ["Node.js", "Express", "PostgreSQL", "Prisma", "Docker"],
+    color: "#2563eb",
+    gradient: "from-blue-950 via-slate-950 to-violet-950",
     liveUrl: "#",
     githubUrl: "#",
   },
   {
     id: 4,
-    title: "VoidCMS",
-    category: "Full Stack",
-    planet: "🟢",
+    title: "Interactive Portfolio System",
+    category: "Frontend",
+    planet: "04",
     description:
-      "Headless CMS with visual drag-and-drop page builder and real-time collaborative editing.",
+      "A cinematic personal site with restrained motion, atmospheric visuals, and a reusable design system.",
     longDescription:
-      "VoidCMS reimagines content management for developer-first teams. The visual page builder uses a block-based approach with a live preview pane. Collaborative editing is powered by CRDT (Yjs) for conflict-free merging.",
+      "A portfolio experience designed as a product surface rather than a template: premium dark composition, controlled atmosphere, responsive sections, and copy centered on software that ships.",
     features: [
-      "Drag-and-drop block editor",
-      "Real-time collaborative editing (CRDT)",
-      "Custom field types & validations",
-      "Multi-language content support",
-      "One-click Vercel/Netlify deploy",
+      "Editorial hero with product-builder positioning",
+      "Reusable premium cards, section headings, and buttons",
+      "Subtle visual atmosphere that supports the content",
+      "Responsive layout tuned for desktop and mobile",
     ],
-    tech: ["Next.js", "TypeScript", "Sanity", "Tailwind", "Vercel"],
-    color: "#00ff88",
-    gradient: "from-emerald-900 to-teal-950",
+    tech: ["React", "Framer Motion", "Tailwind", "Vite"],
+    color: "#a78bfa",
+    gradient: "from-violet-950 via-slate-950 to-slate-950",
     liveUrl: "#",
     githubUrl: "#",
   },
-];
+]
 
 export const skills = {
-  inner: [
-    { name: "React", icon: "⚛️", level: 95, color: "#61dafb" },
-    { name: "Node.js", icon: "🟢", level: 88, color: "#68a063" },
-    { name: "TypeScript", icon: "TS", level: 90, color: "#3178c6" },
-    { name: "Python", icon: "🐍", level: 82, color: "#3572a5" },
-    { name: "Three.js", icon: "3D", level: 75, color: "#00f5ff" },
+  groups: [
+    {
+      title: "Frontend Engineering",
+      description: "Interfaces that feel fast, structured, and comfortable to use.",
+      items: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Three.js"],
+    },
+    {
+      title: "Backend and APIs",
+      description: "Practical service layers, endpoints, validation, and deployment-ready structure.",
+      items: ["Node.js", "Express", "REST APIs", "Authentication", "Docker"],
+    },
+    {
+      title: "Databases and Systems",
+      description: "Data models and persistence choices that support real product workflows.",
+      items: ["PostgreSQL", "MongoDB", "Prisma", "Redis", "Schema Design"],
+    },
+    {
+      title: "AI-Assisted Workflow",
+      description: "Using AI carefully to explore, prototype, debug, and ship faster.",
+      items: ["Prompting", "Rapid Prototyping", "Code Review", "Automation", "Product Research"],
+    },
+    {
+      title: "Product and UI Thinking",
+      description: "Clear flows, tasteful composition, and interfaces that explain themselves.",
+      items: ["SaaS UI", "Dashboards", "Design Systems", "UX Writing", "Figma"],
+    },
   ],
-  middle: [
-    { name: "PostgreSQL", icon: "🐘", level: 85, color: "#336791" },
-    { name: "MongoDB", icon: "🍃", level: 80, color: "#47a248" },
-    { name: "Docker", icon: "🐳", level: 78, color: "#2496ed" },
-    { name: "AWS", icon: "☁️", level: 72, color: "#ff9900" },
-    { name: "Vue", icon: "V", level: 76, color: "#42b883" },
-    { name: "GraphQL", icon: "◈", level: 70, color: "#e535ab" },
-  ],
-  outer: [
-    { name: "Figma", icon: "F", level: 85, color: "#f24e1e" },
-    { name: "Redis", icon: "R", level: 68, color: "#dc382d" },
-    { name: "Next.js", icon: "▲", level: 88, color: "#ffffff" },
-    { name: "FastAPI", icon: "⚡", level: 74, color: "#009688" },
-  ],
-};
+}
+
+export const education = [
+  {
+    degree: "Master in Intelligent Information Systems (SII)",
+    institution: "USTHB",
+    period: "2025 - Present",
+    description:
+      "Focused on intelligent systems, AI, software engineering, and advanced computing.",
+  },
+  {
+    degree: "Licence in Computer Science",
+    institution: "USTHB",
+    period: "Completed 2025",
+    description:
+      "Foundation in algorithms, databases, operating systems, software engineering, and web development.",
+  },
+]
 
 export const experience = [
   {
-    date: "2023 — Present",
-    role: "Senior Frontend Developer",
-    company: "NovaTech Industries",
-    location: "Remote",
-    type: "work",
-    achievements: [
-      "Led migration from CRA to Vite, 4x build speed improvement",
-      "Built design system used across 8 product teams",
-      "Mentored 3 junior developers to mid-level promotions",
-      "Introduced WebGL visualizations, boosting engagement 40%",
+    role: "IT Member & Event Organizer",
+    organization: "Open Minds Club",
+    period: "2024 - Present",
+    bullets: [
+      "Supported technical and organizational work for club events.",
+      "Helped with event logistics, communication, and digital/admin tasks.",
+      "Contributed to collaborative projects and student community initiatives.",
     ],
-    tech: ["React", "TypeScript", "Three.js", "AWS"],
+    tags: ["Open Minds Club", "Events", "Community"],
   },
   {
-    date: "2021 — 2023",
-    role: "Full Stack Developer",
-    company: "Orbital Systems",
-    location: "San Francisco, CA",
-    type: "work",
-    achievements: [
-      "Architected microservices handling 50k requests/minute",
-      "Reduced API latency 60% with Redis caching strategy",
-      "Shipped real-time analytics dashboard (2M data points)",
+    role: "Full-Stack Developer / Product Builder",
+    organization: "Independent Projects",
+    period: "2024 - Present",
+    bullets: [
+      "Built web applications, SaaS concepts, and internal business systems.",
+      "Worked across frontend, backend, databases, authentication, dashboards, and deployment.",
+      "Used AI-assisted development workflows to move faster from idea to production.",
     ],
-    tech: ["Vue", "Node.js", "PostgreSQL", "Docker"],
+    tags: ["React", "Node.js", "SaaS", "AI Tools"],
+  },
+]
+
+export const blogPosts = [
+  // Place real blog/feed images in public/blog/ and reference them as /blog/file-name.jpg.
+  // Missing images are handled gracefully by the Blog component with a premium placeholder.
+  {
+    id: "open-minds-event-organization",
+    type: "Event",
+    title: "Organizing tech events with Open Minds Club",
+    date: "2024 - 2025",
+    excerpt:
+      "A look at my role supporting student tech events through logistics, digital coordination, and teamwork.",
+    content: [
+      "As an IT member and event organizer at Open Minds Club, I contributed to the technical and organizational side of student community events.",
+      "The experience helped me improve communication, planning, and administrative execution - skills that also matter when building real software products.",
+    ],
+    tags: ["Open Minds Club", "Events", "Community"],
+    image: "/blog/open-minds-event.jpg",
+    imageAlt: "Open Minds Club event organization",
+    link: "",
   },
   {
-    date: "2020 — 2021",
-    role: "Junior Developer",
-    company: "Stargate Studios",
-    location: "New York, NY",
-    type: "work",
-    achievements: [
-      "Shipped 6 client projects on-time and under budget",
-      "Built internal tooling that saved the team 10hr/week",
+    id: "ai-assisted-development",
+    type: "Blog",
+    title: "How I use AI-assisted development to ship faster",
+    date: "Coming soon",
+    excerpt:
+      "Notes on using tools like Claude, GPT, and Codex as a force multiplier while still making the technical decisions myself.",
+    content: [
+      "AI tools help me move faster from idea to implementation, but the important part is still knowing what to build, how to structure it, and how to verify the result.",
+      "My workflow combines product thinking, full-stack development, and AI-assisted iteration.",
     ],
-    tech: ["React", "Python", "Django"],
+    tags: ["AI", "Workflow", "Development"],
+    image: "/blog/ai-assisted-development.jpg",
+    imageAlt: "AI-assisted development workflow",
+    link: "",
   },
   {
-    date: "2016 — 2020",
-    role: "B.Sc. Computer Science",
-    company: "University of the Cosmos",
-    location: "Boston, MA",
-    type: "education",
-    achievements: [
-      "Graduated Summa Cum Laude (GPA 3.9/4.0)",
-      "Thesis: WebGL Rendering Optimization for Real-Time Data",
+    id: "web-development-certificate",
+    type: "Certificate",
+    title: "Web development certificate",
+    date: "Add date",
+    excerpt:
+      "A certificate related to modern web development. Replace this placeholder with the real certificate details.",
+    content: [
+      "Replace this placeholder with the certificate description, issuing organization, skills learned, and verification link if available.",
     ],
-    tech: ["C++", "OpenGL", "Python"],
+    tags: ["Certificate", "Web Development"],
+    image: "/blog/web-development-certificate.jpg",
+    imageAlt: "Web development certificate",
+    link: "",
   },
-];
+  {
+    id: "business-systems-note",
+    type: "Project Note",
+    title: "Why business systems are more interesting than simple websites",
+    date: "Coming soon",
+    excerpt:
+      "Thoughts on dashboards, workflows, authentication, order systems, and internal tools.",
+    content: [
+      "Simple websites are useful, but business systems are where software starts solving real operational problems.",
+      "I enjoy building tools that organize workflows, reduce manual work, and give people clearer control over their process.",
+    ],
+    tags: ["SaaS", "Business Systems", "Product"],
+    image: "/blog/business-systems-note.jpg",
+    imageAlt: "Business systems and product workflow",
+    link: "",
+  },
+  {
+    id: "technical-learning-workshops",
+    type: "Workshop",
+    title: "Technical learning and community participation",
+    date: "Add date",
+    excerpt:
+      "Workshops, meetups, and learning events around software engineering, AI, and product development.",
+    content: [
+      "Replace this placeholder with real workshop or event details.",
+      "Use this post type for technical learning activities, meetups, or community sessions.",
+    ],
+    tags: ["Workshop", "Learning", "Community"],
+    image: "/blog/technical-learning-workshops.jpg",
+    imageAlt: "Technical learning workshop",
+    link: "",
+  },
+]
