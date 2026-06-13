@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 
 const TECH_COLORS = {
@@ -35,8 +36,41 @@ function TechPill({ tech }) {
   )
 }
 
+function getProjectInitials(title) {
+  return title
+    .split(' ')
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0])
+    .join('')
+    .toUpperCase()
+}
+
+function ProjectImageFallback({ project }) {
+  return (
+    <div
+      className="absolute inset-0 flex items-center justify-center"
+      style={{
+        background: `radial-gradient(circle at 20% 0%, ${project.color}26, transparent 36%), linear-gradient(135deg, rgba(255,255,255,0.045), transparent 55%)`,
+      }}
+    >
+      <span
+        className="grid h-20 w-20 place-items-center rounded-full border text-xl font-semibold text-star-white backdrop-blur-xl"
+        style={{
+          borderColor: `${project.color}38`,
+          background: `${project.color}14`,
+        }}
+      >
+        {getProjectInitials(project.title)}
+      </span>
+    </div>
+  )
+}
+
 export default function ProjectCard({ project, index, onOpenModal }) {
   const shouldReduceMotion = useReducedMotion()
+  const [imageError, setImageError] = useState(false)
+  const hasImage = Boolean(project.image) && !imageError
   const initial = shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 34 }
   const visible = shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }
 
@@ -61,31 +95,45 @@ export default function ProjectCard({ project, index, onOpenModal }) {
     >
       <div className="relative z-10 flex flex-1 flex-col">
         <div className="relative mb-7 overflow-hidden rounded-[20px] border border-white/8 bg-[#050510] p-5">
-          <div
-            className="absolute inset-0 opacity-80 transition duration-500 group-hover:opacity-100"
-            style={{
-              background: `radial-gradient(circle at 20% 0%, ${project.color}26, transparent 36%), linear-gradient(135deg, rgba(255,255,255,0.045), transparent 55%)`,
-            }}
-          />
-          <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-28`} />
+          {hasImage ? (
+            <img
+              src={project.image}
+              alt={project.imageAlt || project.title}
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover object-center opacity-100"
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            <ProjectImageFallback project={project} />
+          )}
+          {!hasImage && <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-28`} />}
+          {hasImage && <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />}
           <div className="relative flex h-44 items-end justify-between">
-            <div>
-              <span className="font-mono-custom text-[10px] uppercase tracking-[0.22em] text-text-dim">
+            {hasImage ? (
+              <span className="self-start rounded-full border border-white/12 bg-black/28 px-3 py-1 font-mono-custom text-[10px] uppercase tracking-[0.2em] text-star-white/82 backdrop-blur-md">
                 Case {String(index + 1).padStart(2, '0')}
               </span>
-              <p className="mt-3 max-w-[13rem] text-2xl font-semibold leading-tight text-star-white">
-                {project.category} build
-              </p>
-            </div>
-            <span
-              className="grid h-20 w-20 place-items-center rounded-full border text-xl font-semibold text-star-white backdrop-blur-xl"
-              style={{
-                borderColor: `${project.color}38`,
-                background: `${project.color}14`,
-              }}
-            >
-              {project.planet}
-            </span>
+            ) : (
+              <>
+                <div>
+                  <span className="font-mono-custom text-[10px] uppercase tracking-[0.22em] text-text-dim">
+                    Case {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <p className="mt-3 max-w-[13rem] text-2xl font-semibold leading-tight text-star-white">
+                    {project.category} build
+                  </p>
+                </div>
+                <span
+                  className="grid h-20 w-20 place-items-center rounded-full border text-xl font-semibold text-star-white backdrop-blur-xl"
+                  style={{
+                    borderColor: `${project.color}38`,
+                    background: `${project.color}14`,
+                  }}
+                >
+                  {project.planet}
+                </span>
+              </>
+            )}
           </div>
         </div>
 

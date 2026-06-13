@@ -12,10 +12,22 @@ function Pill({ children, color = '#94a3b8' }) {
   )
 }
 
+function getProjectInitials(title) {
+  return title
+    .split(' ')
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0])
+    .join('')
+    .toUpperCase()
+}
+
 export default function ProjectModal({ project, projects, onClose, onNavigate }) {
   const [direction, setDirection] = useState(0)
   const [activeTab, setActiveTab] = useState('overview')
+  const [heroImageError, setHeroImageError] = useState(false)
   const currentIndex = projects.findIndex((p) => p.id === project.id)
+  const hasHeroImage = Boolean(project.image) && !heroImageError
 
   const handlePrev = useCallback(() => {
     if (currentIndex > 0) {
@@ -48,6 +60,10 @@ export default function ProjectModal({ project, projects, onClose, onNavigate })
       document.body.style.overflow = ''
     }
   }, [])
+
+  useEffect(() => {
+    setHeroImageError(false)
+  }, [project.image])
 
   const slideVariants = {
     enter: (dir) => ({ x: dir > 0 ? 40 : -40, opacity: 0 }),
@@ -127,14 +143,32 @@ export default function ProjectModal({ project, projects, onClose, onNavigate })
                 transition={{ duration: 0.25 }}
               >
                 <div className="relative h-56 overflow-hidden md:h-72">
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background: `radial-gradient(circle at 22% 14%, ${project.color}30, transparent 30%), linear-gradient(135deg, #050510, #03030a)`,
-                    }}
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-30`} />
-                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#050510] to-transparent" />
+                  {!hasHeroImage && (
+                    <div
+                      className="absolute inset-0 flex items-center justify-center"
+                      style={{
+                        background: `radial-gradient(circle at 22% 14%, ${project.color}30, transparent 30%), linear-gradient(135deg, #050510, #03030a)`,
+                      }}
+                    >
+                      <span
+                        className="grid h-24 w-24 place-items-center rounded-full border text-2xl font-semibold text-star-white backdrop-blur-xl"
+                        style={{ borderColor: `${project.color}38`, background: `${project.color}14` }}
+                      >
+                        {getProjectInitials(project.title)}
+                      </span>
+                    </div>
+                  )}
+                  {hasHeroImage && (
+                    <img
+                      src={project.image}
+                      alt={project.imageAlt || project.title}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover object-center opacity-100"
+                      onError={() => setHeroImageError(true)}
+                    />
+                  )}
+                  {!hasHeroImage && <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-30`} />}
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
 
                   <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-6">
                     <div>

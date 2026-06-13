@@ -1,343 +1,587 @@
 export const personalInfo = {
-  name: "Mohamed Hamidat",
-  initials: "MH",
-  title: "Full-Stack Developer",
-  roles: [
-    "Full-Stack Developer",
-    "AI-Assisted Product Builder",
-    "SaaS and Web App Builder",
-    "Master SII Student",
-  ],
-  location: "Algeria / building globally",
-  email: "hello@mohamedhamidat.dev",
-  github: "https://github.com/Egoisticki",
-  linkedin: "https://www.linkedin.com/in/mohamed-abdallah-hamidat/",
-  twitter: "https://x.com/egoisticki",
-  stats: [
-    { label: "Focus", value: "Full-stack delivery" },
-    { label: "Strength", value: "Clean product UI" },
-    { label: "Workflow", value: "AI-assisted execution" },
-    { label: "Now", value: "Master SII student" },
-  ],
+name: "Mohamed Hamidat",
+fullName: "Mohamed Abdallah Hamidat",
+initials: "MH",
+title: "Full-Stack Developer",
+tagline: "Full-Stack Developer & Aspiring AI Engineer",
+roles: [
+"Full-Stack Developer",
+"Software Developer",
+"Aspiring AI Engineer",
+],
+location: "Algeria / building globally",
+email: "[moha15252@gmail.com](mailto:moha15252@gmail.com)",
+phone: "+213 655 016 316",
+github: "https://github.com/Egoisticki",
+linkedin: "https://www.linkedin.com/in/mohamed-abdallah-hamidat",
+website: "https://hamidatmohamedabdallah.dev",
+stats: [
+{ label: "Experience", value: "2+ years" },
+{ label: "Focus", value: "Full-stack products" },
+{ label: "Strength", value: "Enterprise workflows" },
+{ label: "Now", value: "AI engineering" },
+],
 }
 
 export const sectionHeadings = {
-  education: {
-    label: "Education",
-    title: "Academic foundation for intelligent software.",
-    subtitle:
-      "A focused academic path in computer science, intelligent systems, AI, and software engineering.",
-  },
-  experience: {
-    label: "Experience",
-    title: "Practical involvement beyond the classroom.",
-    subtitle:
-      "Roles, projects, and community work that sharpen product judgment, execution, and collaboration.",
-  },
-  blog: {
-    label: "Blog",
-    title: "Notes, events, and certificates.",
-    subtitle:
-      "A social-style feed of what I am learning, building, organizing, and sharing - from certificates and events to short technical notes.",
-  },
-  skills: {
-    label: "Capabilities",
-    title: "The stack is organized around outcomes.",
-    subtitle:
-      "Frontend polish, backend reliability, data structure, AI-assisted execution, and product thinking work together instead of living as separate checklists.",
-  },
+skills: {
+label: "Capabilities",
+title: "A stack shaped around real products.",
+subtitle:
+"Frontend polish, backend reliability, data structure, AI experimentation, and product thinking working together.",
+},
+experience: {
+label: "Experience",
+title: "Real systems, real teams, real workflows.",
+subtitle:
+"Enterprise platforms, internships, club leadership, and production-minded software delivery.",
+},
+education: {
+label: "Education",
+title: "Academic foundation for intelligent software.",
+subtitle:
+"Computer science, artificial intelligence, deep learning, and software engineering at USTHB.",
+},
+blog: {
+label: "Blog",
+title: "Notes, events, and certificates.",
+subtitle:
+"A social-style feed of what I am learning, building, organizing, and sharing.",
+},
 }
 
 export const about = {
-  eyebrow: "ABOUT",
-  title: "Mohamed Hamidat",
-  caption: "Full-stack developer",
-  location: "Based in Algeria",
-  portrait: "/src/assets/profile.jpg",
-  portraitAlt: "Portrait of Mohamed Hamidat",
-  portraitFallback: "Add src/assets/profile.jpg",
-  description: [
-    "I'm a full-stack developer and Master SII student building SaaS platforms, business systems, and AI-assisted tools.",
-    "I care about turning real workflows into clean, reliable products from interface design to backend architecture and deployment.",
-  ],
-  focus: "Currently focused on Charikti, business software, and AI-assisted development workflows.",
-  chips: [
-    "SaaS Platforms",
-    "Business Systems",
-    "AI Tools",
-    "Frontend",
-    "Backend APIs",
-    "Product UI",
-  ],
-  currentlyTitle: "Currently",
-  currently: [
-    "Building Charikti",
-    "Studying Master AI at USTHB",
-    "Contributing to Open Minds Club",
-    "Exploring AI development",
-  ],
+eyebrow: "ABOUT",
+title: "Mohamed Hamidat",
+caption: "Full-stack developer",
+location: "Based in Algeria",
+portrait: "/src/assets/profile.jpg",
+portraitAlt: "Portrait of Mohamed Hamidat",
+portraitFallback: "Add src/assets/profile.jpg",
+description: [
+"I’m a full-stack developer and Master’s student focused on building SaaS platforms, enterprise systems, and AI-assisted tools.",
+"I care about turning real workflows into clean, reliable products — from interface design to backend architecture and deployment.",
+],
+focus:
+"Currently focused on Charikti, enterprise business software, and AI-assisted development workflows.",
+chips: [
+"SaaS Platforms",
+"Enterprise Systems",
+"AI Tools",
+"Frontend",
+"Backend APIs",
+"Product UI",
+],
+currentlyTitle: "Currently",
+currently: [
+"Building Charikti",
+"Studying AI at USTHB",
+"Contributing to Open Minds Club",
+"Exploring AI-assisted development",
+],
 }
 
 export const projects = [
-  {
-    id: 1,
-    title: "Business Operations Platform",
-    category: "Full Stack",
-    planet: "01",
-    description:
-      "A focused web system for managing records, workflows, and daily business activity from one clean dashboard.",
-    longDescription:
-      "A full-stack business platform shaped around real operational needs: structured data, clear dashboard views, role-aware workflows, and fast access to the actions people repeat every day.",
-    features: [
-      "Dashboard-first interface for scanning business activity",
-      "CRUD workflows with clean forms and predictable state",
-      "API structure ready for authentication and role-based access",
-      "Responsive layouts built for repeated daily use",
-    ],
-    tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind"],
-    color: "#8b5cf6",
-    gradient: "from-violet-950 via-slate-950 to-cyan-950",
-    liveUrl: "#",
-    githubUrl: "#",
-  },
-  {
-    id: 2,
-    title: "AI-Assisted SaaS Prototype",
-    category: "SaaS",
-    planet: "02",
-    description:
-      "A product prototype that turns a rough service idea into a polished app flow, landing experience, and working interface.",
-    longDescription:
-      "A SaaS-style product prototype focused on speed without sacrificing taste: clear onboarding, practical user flows, reusable components, and AI-assisted iteration for faster build decisions.",
-    features: [
-      "Onboarding flow with product-first copy",
-      "Reusable interface components for dashboard screens",
-      "AI-assisted workflow for ideation, copy, and implementation",
-      "Responsive front-end built for quick product validation",
-    ],
-    tech: ["React", "TypeScript", "Tailwind", "Vite", "Vercel"],
-    color: "#22d3ee",
-    gradient: "from-cyan-950 via-slate-950 to-blue-950",
-    liveUrl: "#",
-    githubUrl: "#",
-  },
-  {
-    id: 3,
-    title: "API and Data System",
-    category: "Backend",
-    planet: "03",
-    description:
-      "A reliable backend foundation for product data, authentication-ready routes, validation, and maintainable service logic.",
-    longDescription:
-      "A backend-oriented build that emphasizes clean API boundaries, structured data models, validation, and predictable service logic so front-end products can move quickly without fragile foundations.",
-    features: [
-      "REST API structure with maintainable route boundaries",
-      "Schema-driven data modeling and validation",
-      "Service layer patterns for clearer business logic",
-      "Environment-ready configuration for deployment",
-    ],
-    tech: ["Node.js", "Express", "PostgreSQL", "Prisma", "Docker"],
-    color: "#2563eb",
-    gradient: "from-blue-950 via-slate-950 to-violet-950",
-    liveUrl: "#",
-    githubUrl: "#",
-  },
-  {
-    id: 4,
-    title: "Interactive Portfolio System",
-    category: "Frontend",
-    planet: "04",
-    description:
-      "A cinematic personal site with restrained motion, atmospheric visuals, and a reusable design system.",
-    longDescription:
-      "A portfolio experience designed as a product surface rather than a template: premium dark composition, controlled atmosphere, responsive sections, and copy centered on software that ships.",
-    features: [
-      "Editorial hero with product-builder positioning",
-      "Reusable premium cards, section headings, and buttons",
-      "Subtle visual atmosphere that supports the content",
-      "Responsive layout tuned for desktop and mobile",
-    ],
-    tech: ["React", "Framer Motion", "Tailwind", "Vite"],
-    color: "#a78bfa",
-    gradient: "from-violet-950 via-slate-950 to-slate-950",
-    liveUrl: "#",
-    githubUrl: "#",
-  },
-  {
-    id: 5,
-    title: "AI-Assisted SaaS Prototype",
-    category: "SaaS",
-    planet: "02",
-    description:
-      "A product prototype that turns a rough service idea into a polished app flow, landing experience, and working interface.",
-    longDescription:
-      "A SaaS-style product prototype focused on speed without sacrificing taste: clear onboarding, practical user flows, reusable components, and AI-assisted iteration for faster build decisions.",
-    features: [
-      "Onboarding flow with product-first copy",
-      "Reusable interface components for dashboard screens",
-      "AI-assisted workflow for ideation, copy, and implementation",
-      "Responsive front-end built for quick product validation",
-    ],
-    tech: ["React", "TypeScript", "Tailwind", "Vite", "Vercel"],
-    color: "#22d3ee",
-    gradient: "from-cyan-950 via-slate-950 to-blue-950",
-    liveUrl: "#",
-    githubUrl: "#",
-  },
+{
+id: "charikti",
+title: "Charikti",
+category: "SaaS",
+type: "Business Management Platform",
+period: "2026 — Present",
+description:
+"A SaaS platform designed to simplify company management through workflows, teams, requests, control, and reporting.",
+longDescription:
+"Charikti is my long-term SaaS project focused on helping companies manage internal operations from one clean workspace. The product direction includes administrative requests, team management, workflows, control layers, and reporting — built around the idea of making business management simpler and more structured.",
+features: [
+"Business workflow management direction",
+"Team and employee organization modules",
+"Requests and approvals concept",
+"Reports and control dashboard direction",
+"Custom visual identity and app branding",
+"Designed as a scalable Algerian-friendly SaaS product",
+],
+tech: ["React", "Vue.js", "NestJS", "PostgreSQL", "TypeScript", "SaaS"],
+image: "/projects/charikti-brand.png",
+imageAlt: "Charikti visual identity and SaaS branding",
+liveUrl: "",
+githubUrl: "",
+privateRepo: true,
+status: "In Development",
+color: "#2563eb",
+gradient: "from-blue-950 via-slate-950 to-cyan-950",
+},
+{
+id: "bea-management-platform",
+title: "BEA Administrative & Leave Platform",
+category: "Enterprise",
+type: "Internship Project",
+period: "Jan 2025 — Jun 2025",
+description:
+"A full-stack enterprise platform built during my BEA internship to digitize internal correspondence and employee leave workflows.",
+longDescription:
+"Developed during my internship at Banque Extérieure d'Algérie, this platform digitizes internal correspondence management and employee leave workflows. It includes role-based access, document tracking, assignment workflows, leave management, live status updates, and real-time SSE notifications for a smoother paperless administrative process.",
+features: [
+"Employee leave management workflows",
+"Internal correspondence digitization",
+"Role-based access control",
+"Document tracking and assignment flows",
+"Real-time notifications with SSE",
+"Responsive interface for HR staff, managers, and employees",
+],
+tech: ["Spring Boot", "Next.js", "PostgreSQL", "JWT Auth", "SSE", "REST APIs"],
+image: "/projects/bea-platform.png",
+imageAlt: "BEA administrative and leave management platform login screen",
+liveUrl: "https://bea-gestion.netlify.app/login",
+githubUrl: "",
+privateRepo: true,
+status: "Private Repository",
+color: "#2563eb",
+gradient: "from-blue-950 via-slate-950 to-sky-950",
+},
+{
+id: "mp-industry-mission-orders",
+title: "2MP Industry Mission Order Platform",
+category: "Enterprise",
+type: "Internal Business System",
+period: "Jun 2024 — Dec 2024",
+description:
+"A custom internal platform for 2MP Industry that replaced paper-based mission orders with digital workflows, tracking, and PDF generation.",
+longDescription:
+"As IT Manager and Software Developer at 2MP Industry, I designed and developed an internal platform for mission order management. The system replaced manual paper-based workflows with digital creation, validation, tracking, PDF generation, archiving, and administrative monitoring.",
+features: [
+"Mission order creation workflow",
+"Multi-step validation and approval",
+"Automated PDF generation",
+"Mission history and tracking dashboards",
+"Secure archiving of administrative records",
+"User onboarding, training, and system maintenance",
+],
+tech: ["NestJS", "JavaScript", "PostgreSQL", "PDF Generation", "RBAC"],
+image: "/projects/2mp-mission-order.png",
+imageAlt: "2MP Industry mission order management system showcase",
+liveUrl: "",
+githubUrl: "",
+privateRepo: true,
+status: "Private Enterprise Project",
+color: "#f59e0b",
+gradient: "from-yellow-950 via-slate-950 to-zinc-950",
+},
+{
+id: "hilex-medical-ecommerce",
+title: "HiLex Medical E-Commerce",
+category: "E-Commerce",
+type: "Client-Facing Platform",
+period: "2025",
+description:
+"A medical-device e-commerce platform for hearing aids, prosthetic products, and healthcare accessories with a complete admin dashboard.",
+longDescription:
+"HiLex is a client-facing e-commerce platform built for a medical device business specializing in hearing aids and related healthcare products. The platform includes product browsing, cart and checkout flows, dynamic product management, and an administration dashboard for managing products, orders, customers, and categories.",
+features: [
+"Responsive medical e-commerce storefront",
+"Dynamic product catalog and filtering",
+"Cart and checkout experience",
+"Product detail pages for hearing devices",
+"Admin dashboard for products, orders, customers, and categories",
+"Backend API and database structure for business operations",
+],
+tech: ["Vue.js", "NestJS", "PostgreSQL", "TypeORM", "JWT Auth", "Admin Dashboard"],
+image: "/projects/hilex-medical.png",
+imageAlt:
+"HiLex medical e-commerce platform showcase with storefront and admin dashboard screens",
+liveUrl: "",
+githubUrl: "",
+privateRepo: true,
+status: "Private Repository",
+color: "#2563eb",
+gradient: "from-blue-950 via-slate-950 to-orange-950",
+},
+{
+id: "hypertempnet",
+title: "HyperTempNet",
+category: "AI / Deep Learning",
+type: "Master’s Thesis Project",
+period: "2024 — 2025",
+description:
+"A deep learning research project for crop mapping from multitemporal Sentinel-2 satellite imagery using environmental covariates and FiLM conditioning.",
+longDescription:
+"HyperTempNet is a research project focused on automatic agricultural crop classification from Sentinel-2 time-series data. The work reproduces MCTNet, studies environmental covariate integration, then proposes a new architecture using SpectralSE, DAPSF, FiLM conditioning, HyperNet, and LTAE to improve crop mapping performance on imbalanced datasets.",
+features: [
+"Reimplemented MCTNet for satellite time-series crop classification",
+"Integrated 12 environmental covariates including climate, soil, and topography",
+"Designed HyperTempNet with SpectralSE, DAPSF, FiLM, HyperNet, and LTAE",
+"Achieved 89.28% OA and 90.00% F1-macro on California",
+"Compared Arkansas and California results through ablation studies",
+],
+tech: [
+"Python",
+"PyTorch",
+"Deep Learning",
+"CNN",
+"Transformer",
+"Computer Vision",
+"Sentinel-2",
+"Remote Sensing",
+],
+metrics: [
+"89.28% OA on California",
+"90.00% F1-macro on California",
+"95.88% OA on Arkansas",
+"0.959 F1-macro on Arkansas",
+],
+image: "/projects/hypertempnet.png",
+imageAlt:
+"Abstract satellite crop mapping visualization with neural network overlays",
+liveUrl: "",
+githubUrl: "https://github.com/Egoisticki/project-ReseauNeur",
+privateRepo: false,
+color: "#22d3ee",
+gradient: "from-emerald-950 via-slate-950 to-cyan-950",
+},
+{
+id: "pexelis-hackathon-2026",
+title: "PEXELIS Hackathon 2026 Platform",
+category: "Event Platform",
+type: "Community & Web Development",
+period: "February 2026",
+description:
+"Official platform for PEXELIS Hackathon 2026, supporting participant experience, event operations, and digital engagement.",
+longDescription:
+"As Organizer and Co-Main Developer of PEXELIS Hackathon 2026, I contributed to both the operational management and technical development of the event. I helped architect and build the official platform using React and Vite, focusing on performance, modularity, and a responsive production-ready experience for participants.",
+features: [
+"Responsive event website",
+"Performance-optimized React architecture",
+"Modular component structure",
+"Participant-facing interface",
+"Production deployment",
+"Hackathon digital presence",
+],
+tech: ["React", "Vite", "JavaScript", "CSS", "Responsive Design"],
+role: ["Organizer", "Co-Main Developer"],
+image: "/projects/pexelis.png",
+imageAlt: "PEXELIS Hackathon 2026 official website",
+liveUrl: "https://pexelis.openmindsclub.net/",
+githubUrl: "",
+privateRepo: true,
+status: "Club Project",
+color: "#8b5cf6",
+gradient: "from-violet-950 via-slate-950 to-cyan-950",
+},
+{
+id: "imprimerie-calculator",
+title: "Imprimerie Calculator",
+category: "Desktop Application",
+type: "Business Tool",
+period: "2025",
+description:
+"A desktop application for printing houses that optimizes paper layouts, calculates production costs, and estimates printing resources for book manufacturing.",
+longDescription:
+"Imprimerie Calculator is a PySide6 desktop application designed for printing businesses. It computes optimal sheet layouts, paper usage, plate requirements, and printing costs based on book dimensions, page counts, margins, and color configurations. The system helps reduce waste and streamline production planning.",
+features: [
+"Optimal sheet layout computation",
+"Automatic paper usage calculation",
+"Printing plate estimation",
+"Production cost calculation",
+"Support for 1, 2, and 4-color printing",
+"Arabic user interface for local businesses",
+"Book manufacturing optimization",
+],
+tech: ["Python", "PySide6", "Desktop Development", "Algorithms", "UI Design"],
+image: "/projects/imprimerie-calculator.png",
+imageAlt: "Arabic desktop application for printing optimization and cost calculation",
+liveUrl: "",
+githubUrl: "",
+privateRepo: true,
+status: "Private Repository",
+color: "#38bdf8",
+gradient: "from-sky-950 via-slate-950 to-blue-950",
+},
+{
+id: "thyroid-nodule-prediction",
+title: "Thyroid Nodule Prediction Platform",
+category: "AI Healthcare",
+type: "Medical AI Application",
+period: "2024",
+description:
+"A web platform for thyroid nodule analysis using deep learning models for medical image prediction and segmentation.",
+longDescription:
+"This project combines deep learning and healthcare to assist in thyroid nodule analysis. The system allows users to upload medical images, perform automated prediction, and use segmentation models for enhanced interpretation. The platform integrates trained PyTorch models into a Flask-based web application.",
+features: [
+"Medical image upload workflow",
+"AI-powered thyroid nodule prediction",
+"Image segmentation using U-Net",
+"User authentication system",
+"Model inference through PyTorch",
+"Interactive web interface",
+],
+tech: ["Python", "Flask", "PyTorch", "U-Net", "Computer Vision", "Deep Learning"],
+image: "/projects/thyroid-ai.png",
+imageAlt: "AI-powered medical image analysis for thyroid nodules",
+liveUrl: "",
+githubUrl: "",
+privateRepo: true,
+status: "Private Repository",
+color: "#3b82f6",
+gradient: "from-blue-950 via-slate-950 to-sky-950",
+},
+{
+id: "tcp-udp-port-scanner",
+title: "TCP/UDP Port Scanner",
+category: "Networking",
+type: "Desktop Utility",
+period: "2024",
+description:
+"A desktop application for scanning TCP and UDP ports on local machines or devices within the same network.",
+longDescription:
+"A GUI-based network utility built with Python and the socket library. It allows users to scan TCP and UDP ports within a specified range, detect open services, and inspect basic responses from local or same-network devices. The project demonstrates networking fundamentals, socket programming, and desktop GUI development.",
+features: [
+"TCP port scanning",
+"UDP port scanning",
+"Custom port range selection",
+"Open/closed port detection",
+"Service response inspection",
+"Graphical desktop interface",
+],
+tech: ["Python", "Sockets", "Networking", "GUI Development"],
+image: "/projects/port-scanner.png",
+imageAlt: "TCP and UDP port scanner desktop application",
+liveUrl: "",
+githubUrl: "https://github.com/Egoisticki/portScanner",
+privateRepo: false,
+color: "#22d3ee",
+gradient: "from-cyan-950 via-slate-950 to-blue-950",
+},
 ]
 
 export const skills = {
-  groups: [
-    {
-      title: "Frontend Engineering",
-      description: "Interfaces that feel fast, structured, and comfortable to use.",
-      items: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Three.js"],
-    },
-    {
-      title: "Backend and APIs",
-      description: "Practical service layers, endpoints, validation, and deployment-ready structure.",
-      items: ["Node.js", "Express", "REST APIs", "Authentication", "Docker"],
-    },
-    {
-      title: "Databases and Systems",
-      description: "Data models and persistence choices that support real product workflows.",
-      items: ["PostgreSQL", "MongoDB", "Prisma", "Redis", "Schema Design"],
-    },
-    {
-      title: "AI-Assisted Workflow",
-      description: "Using AI carefully to explore, prototype, debug, and ship faster.",
-      items: ["Prompting", "Rapid Prototyping", "Code Review", "Automation", "Product Research"],
-    },
-    {
-      title: "Product and UI Thinking",
-      description: "Clear flows, tasteful composition, and interfaces that explain themselves.",
-      items: ["SaaS UI", "Dashboards", "Design Systems", "UX Writing", "Figma"],
-    },
-  ],
+groups: [
+{
+title: "Frontend Engineering",
+description:
+"Modern interfaces with responsive layouts, clean component structure, and polished user experience.",
+items: ["HTML5", "CSS3 / SCSS", "TailwindCSS", "JavaScript", "TypeScript", "Vue.js", "React", "Next.js"],
+},
+{
+title: "Backend and APIs",
+description:
+"Secure APIs, role-based workflows, business logic, and deployment-ready backend structure.",
+items: ["Node.js", "NestJS", "Express.js", "Spring Boot", "Flask", "JWT Auth", "REST APIs"],
+},
+{
+title: "Data and Infrastructure",
+description:
+"Database schemas, persistence layers, tooling, and infrastructure choices for real applications.",
+items: ["PostgreSQL", "MongoDB", "MySQL", "TypeORM", "Docker", "Linux", "Azure VMs"],
+},
+{
+title: "AI and Computer Vision",
+description:
+"Deep learning experimentation, model training, medical image analysis, and remote-sensing research.",
+items: ["PyTorch", "CNN", "Conv2D", "Conv3D", "U-Net", "Computer Vision", "Data Preprocessing"],
+},
+{
+title: "Product and Systems Thinking",
+description:
+"Turning workflows into structured interfaces, reliable systems, and software people can use every day.",
+items: ["System Design", "Design Patterns", "SSE", "WebSockets", "Dashboards", "Enterprise Workflows"],
+},
+],
 }
 
 export const education = [
-  {
-    degree: "Master in Intelligent Information Systems (SII)",
-    institution: "USTHB",
-    period: "2025 - Present",
-    description:
-      "Focused on intelligent systems, AI, software engineering, and advanced computing.",
-  },
-  {
-    degree: "Licence in Computer Science",
-    institution: "USTHB",
-    period: "Completed 2025",
-    description:
-      "Foundation in algorithms, databases, operating systems, software engineering, and web development.",
-  },
+{
+degree: "Master’s Degree in Artificial Intelligence",
+institution: "University of Science and Technology Houari Boumediene (USTHB)",
+period: "2025 — Present",
+description:
+"In progress, focused on artificial intelligence, deep learning, intelligent systems, and advanced computing.",
+},
+{
+degree: "Bachelor’s Degree in Computer Science",
+institution: "University of Science and Technology Houari Boumediene (USTHB)",
+period: "Completed 2025",
+description:
+"Foundation in algorithms, databases, operating systems, software engineering, web development, and computer science fundamentals.",
+},
 ]
 
 export const experience = [
-  {
-    role: "IT Member & Event Organizer",
-    organization: "Open Minds Club",
-    period: "2024 - Present",
-    bullets: [
-      "Supported technical and organizational work for club events.",
-      "Helped with event logistics, communication, and digital/admin tasks.",
-      "Contributed to collaborative projects and student community initiatives.",
-    ],
-    tags: ["Open Minds Club", "Events", "Community"],
-  },
-  {
-    role: "Full-Stack Developer / Product Builder",
-    organization: "Independent Projects",
-    period: "2024 - Present",
-    bullets: [
-      "Built web applications, SaaS concepts, and internal business systems.",
-      "Worked across frontend, backend, databases, authentication, dashboards, and deployment.",
-      "Used AI-assisted development workflows to move faster from idea to production.",
-    ],
-    tags: ["React", "Node.js", "SaaS", "AI Tools"],
-  },
+{
+role: "IT Manager & Software Developer",
+organization: "2MP Industry",
+location: "Blida, Algeria",
+period: "Jun 2024 — Dec 2024",
+bullets: [
+"Oversaw IT infrastructure, internal systems, and digital tools supporting daily company operations.",
+"Designed and developed a custom mission order management platform to replace paper-based workflows.",
+"Implemented mission creation, multi-step approval, real-time tracking, PDF generation, and secure archiving.",
+"Built role-based access, mission history dashboards, and monitoring panels for management and compliance.",
+"Handled user onboarding, training, maintenance, and operational support during the project lifecycle.",
+],
+tags: ["Enterprise", "NestJS", "PostgreSQL", "Workflow Automation"],
+},
+{
+role: "Full-Stack Developer Intern",
+organization: "Banque Extérieure d'Algérie (BEA)",
+location: "Algeria",
+period: "Jan 2025 — Jun 2025",
+bullets: [
+"Developed a full-stack enterprise platform for internal correspondence and employee leave workflows.",
+"Built Spring Boot REST APIs with role-based access control and PostgreSQL database design.",
+"Implemented a responsive Next.js interface for HR staff, managers, and employees.",
+"Integrated real-time SSE notifications, document tracking, assignment workflows, and live status updates.",
+"Collaborated with stakeholders to gather requirements, iterate on features, and deliver within a 6-month internship.",
+],
+tags: ["Spring Boot", "Next.js", "PostgreSQL", "SSE"],
+},
+{
+role: "IT Member & Event Organizer",
+organization: "Open Minds Club — USTHB",
+location: "Algiers, Algeria",
+period: "Sep 2024 — Present",
+bullets: [
+"Active member of the IT division of Open Minds, a scientific and tech-focused student club at USTHB.",
+"Designed and developed official websites for major club events including PEXELIS and Ideathon.",
+"Contributed to event planning, logistics, on-site coordination, and digital execution.",
+"Collaborated with design, communication, and logistics teams to deliver strong event experiences.",
+"Supported the club’s technical capabilities through web development and IT-related assistance.",
+],
+tags: ["Open Minds Club", "React", "Events", "Community"],
+},
 ]
 
 export const blogPosts = [
-  // Place real blog/feed images in public/blog/ and reference them as /blog/file-name.jpg.
-  // Missing images are handled gracefully by the Blog component with a premium placeholder.
-  {
-    id: "open-minds-event-organization",
-    type: "Event",
-    title: "Organizing tech events with Open Minds Club",
-    date: "2024 - 2025",
-    excerpt:
-      "A look at my role supporting student tech events through logistics, digital coordination, and teamwork.",
-    content: [
-      "As an IT member and event organizer at Open Minds Club, I contributed to the technical and organizational side of student community events.",
-      "The experience helped me improve communication, planning, and administrative execution - skills that also matter when building real software products.",
-    ],
-    tags: ["Open Minds Club", "Events", "Community"],
-    image: "/blog/open-minds-event.jpg",
-    imageAlt: "Open Minds Club event organization",
-    link: "",
-  },
-  {
-    id: "ai-assisted-development",
-    type: "Blog",
-    title: "How I use AI-assisted development to ship faster",
-    date: "Coming soon",
-    excerpt:
-      "Notes on using tools like Claude, GPT, and Codex as a force multiplier while still making the technical decisions myself.",
-    content: [
-      "AI tools help me move faster from idea to implementation, but the important part is still knowing what to build, how to structure it, and how to verify the result.",
-      "My workflow combines product thinking, full-stack development, and AI-assisted iteration.",
-    ],
-    tags: ["AI", "Workflow", "Development"],
-    image: "/blog/ai-assisted-development.jpg",
-    imageAlt: "AI-assisted development workflow",
-    link: "",
-  },
-  {
-    id: "web-development-certificate",
-    type: "Certificate",
-    title: "Web development certificate",
-    date: "Add date",
-    excerpt:
-      "A certificate related to modern web development. Replace this placeholder with the real certificate details.",
-    content: [
-      "Replace this placeholder with the certificate description, issuing organization, skills learned, and verification link if available.",
-    ],
-    tags: ["Certificate", "Web Development"],
-    image: "/blog/web-development-certificate.jpg",
-    imageAlt: "Web development certificate",
-    link: "",
-  },
-  {
-    id: "business-systems-note",
-    type: "Project Note",
-    title: "Why business systems are more interesting than simple websites",
-    date: "Coming soon",
-    excerpt:
-      "Thoughts on dashboards, workflows, authentication, order systems, and internal tools.",
-    content: [
-      "Simple websites are useful, but business systems are where software starts solving real operational problems.",
-      "I enjoy building tools that organize workflows, reduce manual work, and give people clearer control over their process.",
-    ],
-    tags: ["SaaS", "Business Systems", "Product"],
-    image: "/blog/business-systems-note.jpg",
-    imageAlt: "Business systems and product workflow",
-    link: "",
-  },
-  {
-    id: "technical-learning-workshops",
-    type: "Workshop",
-    title: "Technical learning and community participation",
-    date: "Add date",
-    excerpt:
-      "Workshops, meetups, and learning events around software engineering, AI, and product development.",
-    content: [
-      "Replace this placeholder with real workshop or event details.",
-      "Use this post type for technical learning activities, meetups, or community sessions.",
-    ],
-    tags: ["Workshop", "Learning", "Community"],
-    image: "/blog/technical-learning-workshops.jpg",
-    imageAlt: "Technical learning workshop",
-    link: "",
-  },
+// Place real blog/feed images in public/blog/ and reference them as /blog/file-name.jpg.
+// Missing images should be handled gracefully by the Blog component with a premium placeholder.
+{
+id: "pexelis-2026",
+type: "Event",
+title: "Organizing and building PEXELIS Hackathon 2026",
+date: "February 2026",
+excerpt:
+"Serving as Organizer and Co-Main Developer for PEXELIS Hackathon 2026.",
+content: [
+"I had the privilege of serving as Organizer and Co-Main Developer for PEXELIS Hackathon 2026.",
+"This role allowed me to combine event coordination, leadership, and software engineering to deliver a high-impact experience for participants.",
+"On the technical side, I helped architect and build the official website using React and Vite, focusing on performance, modularity, and user experience.",
+],
+tags: ["Open Minds Club", "Hackathon", "React", "Community"],
+image: "/blog/pexelis-2026.jpg",
+imageAlt: "PEXELIS Hackathon 2026",
+link: "https://pexelis.openmindsclub.net/",
+},
+{
+id: "bea-internship-platform",
+type: "Project Note",
+title: "Digitizing administrative workflows during my BEA internship",
+date: "Jan 2025 — Jun 2025",
+excerpt:
+"A full-stack internship project focused on correspondence, leave workflows, role-based access, and real-time updates.",
+content: [
+"During my internship at BEA, I worked on a full-stack enterprise platform to digitize internal correspondence and employee leave workflows.",
+"The project strengthened my backend architecture, role-based access control, PostgreSQL modeling, and real-time notification experience.",
+],
+tags: ["BEA", "Spring Boot", "Next.js", "Enterprise"],
+image: "/blog/bea-internship.jpg",
+imageAlt: "BEA administrative platform",
+link: "https://bea-gestion.netlify.app/login",
+},
+{
+id: "hypertempnet-research",
+type: "Blog",
+title: "HyperTempNet: crop mapping with Sentinel-2 time series",
+date: "2025",
+excerpt:
+"Research notes from my deep learning project on agricultural crop classification using satellite imagery and environmental covariates.",
+content: [
+"HyperTempNet explores automatic crop classification from multitemporal Sentinel-2 data.",
+"The project reproduces MCTNet, evaluates environmental covariate integration, and proposes a new architecture using SpectralSE, DAPSF, FiLM conditioning, HyperNet, and LTAE.",
+"The work helped me connect deep learning research with practical remote-sensing challenges such as class imbalance and regional variability.",
+],
+tags: ["PyTorch", "Remote Sensing", "Deep Learning", "Research"],
+image: "/blog/hypertempnet.jpg",
+imageAlt: "Satellite crop mapping and neural network visualization",
+link: "https://github.com/Egoisticki/project-ReseauNeur",
+},
+{
+id: "2mp-mission-order-system",
+type: "Achievement",
+title: "Replacing paper mission orders at 2MP Industry",
+date: "2024",
+excerpt:
+"A practical enterprise system that moved mission orders from paper-based processing to digital workflows.",
+content: [
+"At 2MP Industry, I designed and developed a custom internal platform for mission order management.",
+"The system introduced digital creation, validation, tracking, PDF generation, secure archiving, and administrative monitoring.",
+"This project taught me how much software quality depends on understanding the workflow before writing code.",
+],
+tags: ["2MP Industry", "Enterprise", "Workflow", "PDF"],
+image: "/blog/2mp-mission-orders.jpg",
+imageAlt: "2MP Industry mission order platform",
+link: "",
+},
+{
+id: "building-charikti",
+type: "Project Note",
+title: "Building Charikti as a business management SaaS",
+date: "2026 — Present",
+excerpt:
+"Notes from building Charikti, a SaaS platform designed to simplify company management and internal workflows.",
+content: [
+"Charikti is my long-term SaaS project focused on simplifying business management for companies.",
+"The product direction includes requests, teams, workflows, control, reports, and administrative management.",
+"I am using the project to improve my product thinking, system architecture, and ability to turn real business problems into software.",
+],
+tags: ["Charikti", "SaaS", "Business Systems", "Product"],
+image: "/blog/charikti.jpg",
+imageAlt: "Charikti business management SaaS branding",
+link: "",
+},
+{
+id: "ai-assisted-development",
+type: "Blog",
+title: "How I use AI-assisted development to ship faster",
+date: "Coming soon",
+excerpt:
+"Notes on using Claude, GPT, and Codex as a force multiplier while still making the technical decisions myself.",
+content: [
+"AI tools help me move faster from idea to implementation, but the important part is still knowing what to build, how to structure it, and how to verify the result.",
+"My workflow combines product thinking, full-stack development, and AI-assisted iteration.",
+],
+tags: ["AI", "Workflow", "Development"],
+image: "/blog/ai-assisted-development.jpg",
+imageAlt: "AI-assisted development workflow",
+link: "",
+},
+{
+id: "imprimerie-calculator",
+type: "Project Note",
+title: "Designing a desktop calculator for printing workflows",
+date: "2025",
+excerpt:
+"A local business tool for estimating paper layouts, production resources, and printing costs.",
+content: [
+"Imprimerie Calculator is a desktop application built for practical printing-house workflows.",
+"The project focuses on layout calculation, paper usage estimation, plate requirements, color configurations, and production cost planning.",
+],
+tags: ["Python", "PySide6", "Desktop App", "Business Tool"],
+image: "/blog/imprimerie-calculator.jpg",
+imageAlt: "Printing calculator desktop application",
+link: "",
+},
+{
+id: "thyroid-ai-platform",
+type: "Project Note",
+title: "Building a medical AI platform for thyroid nodule prediction",
+date: "2024",
+excerpt:
+"A Flask and PyTorch project combining medical image upload, model inference, and segmentation.",
+content: [
+"This project combines healthcare, computer vision, and web development.",
+"It integrates trained deep learning models into a Flask application for thyroid nodule prediction and image segmentation.",
+],
+tags: ["Healthcare AI", "Flask", "PyTorch", "Computer Vision"],
+image: "/blog/thyroid-ai.jpg",
+imageAlt: "Medical AI platform for thyroid nodule prediction",
+link: "",
+},
 ]
