@@ -11,8 +11,8 @@ export const personalInfo = {
   location: "Algeria / building globally",
   email: "hello@mohamedhamidat.dev",
   github: "https://github.com/Egoisticki",
-  linkedin: "https://linkedin.com",
-  twitter: "https://twitter.com",
+  linkedin: "https://www.linkedin.com/in/mohamed-abdallah-hamidat/",
+  twitter: "https://x.com/egoisticki",
   stats: [
     { label: "Focus", value: "Full-stack delivery" },
     { label: "Strength", value: "Clean product UI" },
@@ -49,46 +49,32 @@ export const sectionHeadings = {
 }
 
 export const about = {
-  label: "About",
-  title: "Building useful software with taste, speed, and structure.",
-  subtitle:
-    "A personal, practical approach to turning real workflows into calm, reliable product experiences.",
-  name: "Mohamed Hamidat",
-  role: "Full-stack developer",
+  eyebrow: "ABOUT",
+  title: "Mohamed Hamidat",
+  caption: "Full-stack developer",
+  location: "Based in Algeria",
   portrait: "/src/assets/profile.jpg",
   portraitAlt: "Portrait of Mohamed Hamidat",
   portraitFallback: "Add src/assets/profile.jpg",
-  portraitChip: "Product Builder",
-  locationChip: "Based in Algeria",
   description: [
-    "I'm Mohamed Hamidat, a full-stack developer and Master SII student focused on building SaaS platforms, business systems, and AI-assisted tools.",
-    "I care about turning messy real-world workflows into clean, reliable products, from interface design to backend architecture and deployment.",
-    "My work combines product thinking, modern web engineering, and AI-assisted development to move from idea to production faster.",
+    "I'm a full-stack developer and Master SII student building SaaS platforms, business systems, and AI-assisted tools.",
+    "I care about turning real workflows into clean, reliable products from interface design to backend architecture and deployment.",
   ],
+  focus: "Currently focused on Charikti, business software, and AI-assisted development workflows.",
   chips: [
     "SaaS Platforms",
     "Business Systems",
     "AI Tools",
-    "Frontend Engineering",
+    "Frontend",
     "Backend APIs",
     "Product UI",
   ],
-  principles: [
-    {
-      title: "Product thinking",
-      copy:
-        "I start from the workflow and shape the interface around what people need to do clearly and repeatedly.",
-    },
-    {
-      title: "Full-stack structure",
-      copy:
-        "I connect the UI, API, data model, and deployment decisions so the product feels coherent end to end.",
-    },
-    {
-      title: "AI-assisted speed",
-      copy:
-        "I use AI carefully to explore, prototype, review, and ship faster without losing taste or control.",
-    },
+  currentlyTitle: "Currently",
+  currently: [
+    "Building Charikti",
+    "Studying Master AI at USTHB",
+    "Contributing to Open Minds Club",
+    "Exploring AI development",
   ],
 }
 
@@ -174,6 +160,27 @@ export const projects = [
     tech: ["React", "Framer Motion", "Tailwind", "Vite"],
     color: "#a78bfa",
     gradient: "from-violet-950 via-slate-950 to-slate-950",
+    liveUrl: "#",
+    githubUrl: "#",
+  },
+  {
+    id: 5,
+    title: "AI-Assisted SaaS Prototype",
+    category: "SaaS",
+    planet: "02",
+    description:
+      "A product prototype that turns a rough service idea into a polished app flow, landing experience, and working interface.",
+    longDescription:
+      "A SaaS-style product prototype focused on speed without sacrificing taste: clear onboarding, practical user flows, reusable components, and AI-assisted iteration for faster build decisions.",
+    features: [
+      "Onboarding flow with product-first copy",
+      "Reusable interface components for dashboard screens",
+      "AI-assisted workflow for ideation, copy, and implementation",
+      "Responsive front-end built for quick product validation",
+    ],
+    tech: ["React", "TypeScript", "Tailwind", "Vite", "Vercel"],
+    color: "#22d3ee",
+    gradient: "from-cyan-950 via-slate-950 to-blue-950",
     liveUrl: "#",
     githubUrl: "#",
   },

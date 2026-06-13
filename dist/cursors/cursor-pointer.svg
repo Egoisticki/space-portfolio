@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
+  <defs>
+    <linearGradient id="pointerStroke" x1="10" y1="4" x2="37" y2="39" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9333ea"/>
+      <stop offset="0.5" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <filter id="pointerShadow" x="-10" y="-10" width="64" height="64" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="2" stdDeviation="1.6" flood-color="#03030a" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <path
+    d="M15.4 37.7L8.1 25.2C6.6 22.8 7.5 19.7 10 18.3C12 17.2 14.1 17.6 15.6 18.8V10.2C15.6 7.4 17.8 5.2 20.6 5.2C23.4 5.2 25.6 7.4 25.6 10.2V15.1C26.4 14.6 27.3 14.3 28.3 14.3C30.1 14.3 31.7 15.2 32.6 16.6C33.4 16.2 34.2 16 35.1 16C37.9 16 40.1 18.2 40.1 21V31.5C40.1 37.1 35.7 41.5 30.1 41.5H23.9C20.4 41.5 17.2 40.1 15.4 37.7Z"
+    fill="#ffffff"
+    stroke="url(#pointerStroke)"
+    stroke-width="5.4"
+    stroke-linejoin="round"
+    stroke-linecap="round"
+    filter="url(#pointerShadow)"
+  />
+  <path
+    d="M20.6 8.7C19.8 8.7 19.1 9.4 19.1 10.2V26.7L15.2 23.1C14.2 22.1 12.7 22 11.7 22.8C10.7 23.6 10.5 25.1 11.2 26.2L18.4 38.2C19.6 39.4 21.6 40.1 23.9 40.1H30.1C34.8 40.1 38.7 36.2 38.7 31.5V21C38.7 20 38 19.3 37.1 19.3C36.2 19.3 35.6 20 35.6 21V25.7H33.3V19.3C33.3 18.4 32.6 17.7 31.7 17.7C30.8 17.7 30.2 18.4 30.2 19.3V25.2H27.9V17.9C27.9 17 27.2 16.3 26.3 16.3C25.4 16.3 24.8 17 24.8 17.9V25.2H22.5V10.2C22.5 9.4 21.8 8.7 20.6 8.7Z"
+    fill="#ffffff"
+    opacity="0.94"
+  />
+</svg>

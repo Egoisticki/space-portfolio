@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 
 const TECH_COLORS = {
   React: '#61dafb',
@@ -36,14 +36,19 @@ function TechPill({ tech }) {
 }
 
 export default function ProjectCard({ project, index, onOpenModal }) {
+  const shouldReduceMotion = useReducedMotion()
+  const initial = shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 34 }
+  const visible = shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }
+
   return (
     <motion.article
       className="premium-card group flex min-h-[430px] cursor-pointer flex-col p-5 md:p-6"
-      initial={{ opacity: 0, y: 34 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={initial}
+      whileInView={visible}
+      exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 12 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-      whileHover={{ y: -6 }}
+      whileHover={shouldReduceMotion ? {} : { y: -6 }}
       onClick={() => onOpenModal(project)}
       tabIndex={0}
       role="button"

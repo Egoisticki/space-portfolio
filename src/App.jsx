@@ -85,11 +85,11 @@ function MainLayout() {
         </SectionReveal>
         <Divider />
         <SectionReveal>
-          <Education />
+          <Experience />
         </SectionReveal>
         <Divider />
         <SectionReveal>
-          <Experience />
+          <Education />
         </SectionReveal>
         <Divider />
         <SectionReveal>
