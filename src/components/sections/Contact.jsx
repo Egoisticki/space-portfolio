@@ -43,7 +43,7 @@ export default function Contact() {
             </p>
 
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <a href={`mailto:${personalInfo.email}`}>
+              <a href={`mailto:${personalInfo.email}`} >
                 <GlowButton variant="primary" icon={<MailIcon />}>
                   Let's talk
                 </GlowButton>

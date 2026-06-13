@@ -130,7 +130,7 @@ export default function Hero() {
             className="mb-5 flex flex-wrap items-center gap-2.5"
             {...reveal(0)}
           >
-            <span className="section-eyebrow">Full-stack developer - AI-assisted product builder</span>
+            <span className="section-eyebrow">Full-stack developer - AI-engineer</span>
             <span className="rounded-full border border-emerald-400/18 bg-emerald-400/8 px-3 py-1 text-xs font-medium text-emerald-300">
               Available for selected builds
             </span>
@@ -154,7 +154,7 @@ export default function Hero() {
             className="mt-6 max-w-[40rem] text-[clamp(1rem,1.55vw,1.12rem)] leading-7 text-text-dim md:leading-8"
             {...reveal(0.3)}
           >
-            I design and build SaaS platforms, business systems, and AI-assisted web apps
+            I design and build SaaS platforms, business systems, and web apps
             with clean interfaces, reliable architecture, and fast execution.
           </motion.p>
 
@@ -164,7 +164,7 @@ export default function Hero() {
           >
             <span className="text-star-white">{personalInfo.name}</span>
             <span className="h-1 w-1 rounded-full bg-white/35" />
-            <span>Master SII Student</span>
+            <span>Master AI Student</span>
             <span className="h-1 w-1 rounded-full bg-white/35" />
             <span>Web Apps / SaaS / AI Tools</span>
           </motion.div>
