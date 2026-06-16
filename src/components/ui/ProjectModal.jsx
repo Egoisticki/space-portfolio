@@ -1,5 +1,6 @@
 import { useEffect, useCallback, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { getLenis } from '../../hooks/useLenis'
 
 function Pill({ children, color = '#94a3b8' }) {
   return (
@@ -55,9 +56,13 @@ export default function ProjectModal({ project, projects, onClose, onNavigate })
   }, [onClose, handlePrev, handleNext])
 
   useEffect(() => {
+    const lenis = getLenis()
     document.body.style.overflow = 'hidden'
+    if (lenis && typeof lenis.stop === 'function') lenis.stop()
+
     return () => {
       document.body.style.overflow = ''
+      if (lenis && typeof lenis.start === 'function') lenis.start()
     }
   }, [])
 
@@ -72,25 +77,25 @@ export default function ProjectModal({ project, projects, onClose, onNavigate })
   }
 
   return (
-    <>
-      <motion.div
-        className="fixed inset-0 z-[90] bg-[#03030a]/82 backdrop-blur-2xl"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        onClick={onClose}
-      />
-
-      <motion.div className="fixed inset-0 z-[91] flex items-end justify-center p-0 pointer-events-none md:items-center md:p-6">
+    <motion.div
+      className="fixed inset-0 z-[90] overflow-hidden bg-[#03030a]/82 backdrop-blur-2xl"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onPointerDown={(event) => {
+        if (event.target === event.currentTarget) onClose()
+      }}
+    >
+      <div className="flex h-screen items-center justify-center p-6">
         <motion.div
-          className="premium-card modal-scroll pointer-events-auto flex max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-t-[28px] md:max-h-[88vh] md:rounded-[28px]"
+          className="h-[90vh] w-full max-w-4xl overflow-hidden rounded-[28px] bg-transparent shadow-lg flex flex-col"
           initial={{ y: 80, opacity: 0, scale: 0.98 }}
           animate={{ y: 0, opacity: 1, scale: 1 }}
           exit={{ y: 80, opacity: 0, scale: 0.98 }}
           transition={{ type: 'spring', stiffness: 220, damping: 28 }}
           onClick={(event) => event.stopPropagation()}
         >
-          <div className="relative z-10 flex shrink-0 items-center justify-between border-b border-white/8 px-5 py-4 md:px-6">
+          <div className="sticky top-0 z-10 flex shrink-0 items-center justify-between border-b border-white/8 px-5 py-4 md:px-6 bg-gradient-to-b from-black/40 to-transparent">
             <div>
               <p className="font-mono-custom text-[10px] uppercase tracking-[0.22em] text-cyan/60">
                 Case {String(currentIndex + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
@@ -131,7 +136,7 @@ export default function ProjectModal({ project, projects, onClose, onNavigate })
             </div>
           </div>
 
-          <div className="relative z-10 overflow-y-auto">
+          <div className="flex-1 min-h-0 overflow-y-auto relative z-10">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={project.id}
@@ -280,7 +285,7 @@ export default function ProjectModal({ project, projects, onClose, onNavigate })
             </AnimatePresence>
           </div>
         </motion.div>
-      </motion.div>
-    </>
+      </div>
+    </motion.div>
   )
 }

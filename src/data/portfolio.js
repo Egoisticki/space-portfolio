@@ -584,4 +584,36 @@ image: "/blog/thyroid-ai.jpg",
 imageAlt: "Medical AI platform for thyroid nodule prediction",
 link: "",
 },
+
+{
+  id: "pexelis-hackathon-2026",
+  type: "Event",
+  title: "Organizer & Co-Main Developer — PEXELIS Hackathon 2026",
+  date: "Feb 2026",
+  author: "Mohamed Hamidat",
+  excerpt:
+    "Served as Organizer and Co-Main Developer for PEXELIS Hackathon 2026, contributing to both event operations and development of the official platform.",
+  content: [
+    "I had the privilege of serving as an Organizer and Co-Main Developer for PEXELIS Hackathon 2026, contributing to both the operational execution and the digital backbone of the event.",
+    "Being involved at both strategic and technical levels allowed me to combine coordination, leadership, and hands-on development to help deliver a high-impact tech experience.",
+    "As Co-Main Developer of the official website, I helped architect and build the platform using React and Vite, focusing on performance, modularity, and a production-ready user experience.",
+    "This experience strengthened my skills in software engineering, teamwork, event organization, and technical leadership."
+  ],
+  tags: [
+    "PEXELIS",
+    "Open Minds Club",
+    "React",
+    "Vite",
+    "Hackathon",
+    "Leadership"
+  ],
+  image: "/blog/pexelis.png",
+  gallery: [
+    "/blog/pexelis-certificate.png",
+    "/blog/pexelis.png"
+  ],
+  link:
+    "https://www.linkedin.com/posts/mohamed-abdallah-hamidat_openmindclub-pexelis-hackathon-ugcPost-7430606022697754624-_V6S/",
+  featured: true
+},
 ]

@@ -4,6 +4,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import SectionTitle from '../ui/SectionTitle'
 import { blogPosts, personalInfo, sectionHeadings } from '../../data/portfolio'
 import { scrollTo } from '../../hooks/useLenis'
+import { getLenis } from '../../hooks/useLenis'
 
 const INITIAL_VISIBLE_COUNT = 4
 
@@ -190,110 +191,106 @@ function BlogModal({ post, onClose }) {
   const shouldReduceMotion = useReducedMotion()
 
   useEffect(() => {
+    const lenis = getLenis()
     const onKeyDown = (event) => {
       if (event.key === 'Escape' || event.key === 'Esc') onClose()
     }
 
+    // simple body lock
     document.body.style.overflow = 'hidden'
-    document.addEventListener('keydown', onKeyDown, true)
-    document.addEventListener('keyup', onKeyDown, true)
+    // pause Lenis if present
+    if (lenis && typeof lenis.stop === 'function') lenis.stop()
+
     window.addEventListener('keydown', onKeyDown, true)
-    window.addEventListener('keyup', onKeyDown, true)
 
     return () => {
       document.body.style.overflow = ''
-      document.removeEventListener('keydown', onKeyDown, true)
-      document.removeEventListener('keyup', onKeyDown, true)
       window.removeEventListener('keydown', onKeyDown, true)
-      window.removeEventListener('keyup', onKeyDown, true)
+      if (lenis && typeof lenis.start === 'function') lenis.start()
     }
   }, [onClose])
 
   return createPortal(
     <motion.div
-      className="fixed inset-0 z-[90] flex items-end justify-center bg-[#03030a]/82 p-0 backdrop-blur-2xl md:items-center md:p-6"
+      className="fixed inset-0 z-[90] overflow-hidden bg-[#03030a]/82 backdrop-blur-2xl"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.22, ease: 'easeOut' }}
-      onClick={onClose}
       onPointerDown={(event) => {
         if (event.target === event.currentTarget) onClose()
       }}
     >
-      <motion.article
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby={`blog-title-${post.id}`}
-        className="premium-card modal-scroll relative max-h-[92vh] w-full max-w-3xl overflow-y-auto rounded-t-[28px] p-6 md:rounded-[28px] md:p-8"
-        initial={shouldReduceMotion ? { opacity: 0 } : { y: 24, opacity: 0, scale: 0.96 }}
-        animate={shouldReduceMotion ? { opacity: 1 } : { y: 0, opacity: 1, scale: 1 }}
-        exit={shouldReduceMotion ? { opacity: 0 } : { y: 24, opacity: 0, scale: 0.96 }}
-        transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-        onClick={(event) => event.stopPropagation()}
-      >
-        <motion.div
-          className="relative z-10"
-          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 8 }}
-          transition={{ duration: 0.3, delay: 0.04, ease: [0.22, 1, 0.36, 1] }}
+      <div className="flex h-screen items-center justify-center p-6">
+        <motion.article
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby={`blog-title-${post.id}`}
+          className="h-[90vh] w-full max-w-3xl overflow-hidden rounded-[28px] bg-transparent shadow-lg flex flex-col"
+          initial={shouldReduceMotion ? { opacity: 0 } : { y: 24, opacity: 0, scale: 0.96 }}
+          animate={shouldReduceMotion ? { opacity: 1 } : { y: 0, opacity: 1, scale: 1 }}
+          exit={shouldReduceMotion ? { opacity: 0 } : { y: 24, opacity: 0, scale: 0.96 }}
+          transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <div className="flex flex-wrap items-center gap-2.5">
-                <TypeBadge type={post.type} />
-                <span className="text-sm text-text-dim">{post.date}</span>
+          <div className="sticky top-0 z-10 border-b border-white/8 bg-gradient-to-b from-black/40 to-transparent px-6 py-4 backdrop-blur-sm">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <div className="flex flex-wrap items-center gap-2.5">
+                  <TypeBadge type={post.type} />
+                  <span className="text-sm text-text-dim">{post.date}</span>
+                </div>
+                <h3 id={`blog-title-${post.id}`} className="mt-3 text-2xl font-semibold leading-tight text-star-white md:text-3xl">
+                  {post.title}
+                </h3>
               </div>
-              <h3 id={`blog-title-${post.id}`} className="mt-5 text-3xl font-semibold leading-tight text-star-white md:text-4xl">
-                {post.title}
-              </h3>
+
+              <button
+                type="button"
+                onClick={onClose}
+                onPointerDown={onClose}
+                className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/10 text-text-dim transition hover:border-white/20 hover:text-star-white"
+                aria-label="Close blog post"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M18 6 6 18M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div className="flex-1 min-h-0 overflow-y-auto p-6 md:p-8">
+            <div className="space-y-5 text-base leading-8 text-text-primary md:text-lg">
+              <BlogMedia post={post} />
+
+              {post.content.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </div>
 
-            <button
-              type="button"
-              onClick={onClose}
-              onPointerDown={onClose}
-              className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/10 text-text-dim transition hover:border-white/20 hover:text-star-white"
-              aria-label="Close blog post"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M18 6 6 18M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
+            <div className="mt-8 flex flex-wrap gap-2">
+              {post.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-white/10 bg-white/[0.035] px-3 py-1.5 text-sm text-text-primary"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
 
-          <div className="mt-7 space-y-5 text-base leading-8 text-text-primary md:text-lg">
-            <BlogMedia post={post} />
-
-            {post.content.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-
-          <div className="mt-8 flex flex-wrap gap-2">
-            {post.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full border border-white/10 bg-white/[0.035] px-3 py-1.5 text-sm text-text-primary"
+            {post.link && (
+              <a
+                href={post.link}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-8 inline-flex min-h-11 items-center justify-center rounded-full border border-white/12 bg-white/[0.045] px-5 text-sm font-semibold text-star-white transition hover:bg-white/[0.075]"
               >
-                {tag}
-              </span>
-            ))}
+                Open link
+              </a>
+            )}
           </div>
-
-          {post.link && (
-            <a
-              href={post.link}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-8 inline-flex min-h-11 items-center justify-center rounded-full border border-white/12 bg-white/[0.045] px-5 text-sm font-semibold text-star-white transition hover:bg-white/[0.075]"
-            >
-              Open link
-            </a>
-          )}
-        </motion.div>
-      </motion.article>
+        </motion.article>
+      </div>
     </motion.div>,
     document.body
   )
