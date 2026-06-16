@@ -190,12 +190,12 @@ function BlogCard({ post, index, onOpen }) {
 function BlogModal({ post, onClose }) {
   const shouldReduceMotion = useReducedMotion()
 
+  // Body scroll lock + Lenis pause
   useEffect(() => {
     const lenis = getLenis()
-    const onKeyDown = (event) => {
-      if (event.key === 'Escape' || event.key === 'Esc') onClose()
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape' || e.key === 'Esc') onClose()
     }
-
     // Lock BOTH html and body — locking body alone leaves <html> scrollable,
     // which is what lets overscroll leak to the page behind the modal.
     const prevHtml = document.documentElement.style.overflow
@@ -203,9 +203,7 @@ function BlogModal({ post, onClose }) {
     document.documentElement.style.overflow = 'hidden'
     document.body.style.overflow = 'hidden'
     if (lenis?.stop) lenis.stop()
-
     window.addEventListener('keydown', onKeyDown, true)
-
     return () => {
       document.documentElement.style.overflow = prevHtml
       document.body.style.overflow = prevBody
@@ -215,16 +213,19 @@ function BlogModal({ post, onClose }) {
   }, [onClose])
 
   return createPortal(
+    /* ── Layer 1: fullscreen backdrop ── */
     <motion.div
       className="fixed inset-0 z-[100] bg-[#03030a]/80 backdrop-blur-xl"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      onPointerDown={(event) => {
-        if (event.target === event.currentTarget) onClose()
-      }}
+      transition={{ duration: 0.22, ease: 'easeOut' }}
+      onPointerDown={(e) => { if (e.target === e.currentTarget) onClose() }}
     >
+      {/* ── Layer 2: centering wrapper ── */}
       <div className="flex h-full items-center justify-center p-4 md:p-6">
+
+        {/* ── Layer 3: modal shell — fixed size, clips children ── */}
         <motion.article
           role="dialog"
           aria-modal="true"
@@ -239,70 +240,83 @@ function BlogModal({ post, onClose }) {
           animate={shouldReduceMotion ? { opacity: 1 } : { y: 0, opacity: 1, scale: 1 }}
           exit={shouldReduceMotion ? { opacity: 0 } : { y: 24, opacity: 0, scale: 0.96 }}
           transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+          onClick={(e) => e.stopPropagation()}
         >
-          <div className="shrink-0 flex items-center justify-between border-b border-white/8 px-6 py-4 bg-[#070711]">
-            <div>
-              <div className="flex flex-wrap items-center gap-2.5">
-                <TypeBadge type={post.type} />
-                <span className="text-sm text-text-dim">{post.date}</span>
-              </div>
-              <h3 id={`blog-title-${post.id}`} className="mt-3 text-xl font-semibold leading-tight text-star-white md:text-2xl">
-                {post.title}
-              </h3>
-            </div>
 
-            <button
-              type="button"
-              onClick={onClose}
-              onPointerDown={onClose}
-              className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-white/10 text-text-dim transition hover:border-white/20 hover:text-star-white"
-              aria-label="Close blog post"
-            >
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M18 6 6 18M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-
-          <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain" data-lenis-prevent>
-            <div className="p-6 md:p-8">
-              <div className="space-y-5 text-base leading-8 text-text-primary md:text-lg">
-                <BlogMedia post={post} />
-
-                {post.content.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-              </div>
-
-              <div className="mt-8 flex flex-wrap gap-2">
-                {post.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-white/10 bg-white/[0.035] px-3 py-1.5 text-sm text-text-primary"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              {post.link && (
-                <a
-                  href={post.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-8 inline-flex min-h-11 items-center justify-center rounded-full border border-white/12 bg-white/[0.045] px-5 text-sm font-semibold text-star-white transition hover:bg-white/[0.075]"
+          {/* ── Header: shrink-0 so it never compresses ── */}
+          <div className="shrink-0 border-b border-white/8 px-6 py-4 bg-[#070711]">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <div className="flex flex-wrap items-center gap-2.5">
+                  <TypeBadge type={post.type} />
+                  <span className="text-sm text-text-dim">{post.date}</span>
+                </div>
+                <h3
+                  id={`blog-title-${post.id}`}
+                  className="mt-3 text-2xl font-semibold leading-tight text-star-white md:text-3xl"
                 >
-                  Open link
-                </a>
-              )}
+                  {post.title}
+                </h3>
+              </div>
+
+              <button
+                type="button"
+                onClick={onClose}
+                className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/10 text-text-dim transition hover:border-white/20 hover:text-star-white"
+                aria-label="Close blog post"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M18 6 6 18M6 6l12 12" />
+                </svg>
+              </button>
             </div>
           </div>
+
+          {/* ── Scrollable content: THE only scrolling element ── */}
+          <div
+            className="flex-1 min-h-0 overflow-y-auto overscroll-contain p-6 md:p-8"
+            data-lenis-prevent
+          >
+            <div className="space-y-5 text-base leading-8 text-text-primary md:text-lg">
+              <BlogMedia post={post} />
+              {post.content.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-2">
+              {post.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-white/10 bg-white/[0.035] px-3 py-1.5 text-sm text-text-primary"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            {post.link && (
+              <a
+                href={post.link}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-8 inline-flex min-h-11 items-center justify-center rounded-full border border-white/12 bg-white/[0.045] px-5 text-sm font-semibold text-star-white transition hover:bg-white/[0.075]"
+              >
+                Open link
+              </a>
+            )}
+          </div>
+          {/* end scrollable */}
+
         </motion.article>
+        {/* end modal shell */}
+
       </div>
     </motion.div>,
     document.body
   )
 }
+
 
 export default function Blog() {
   const sectionRef = useRef(null)

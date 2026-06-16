@@ -20,6 +20,16 @@ export function useLenis() {
       wheelMultiplier: 1,
       touchMultiplier: 1.5,
       infinite: false,
+      // ── CRITICAL FOR MODALS ──
+      // When the wheel/touch event originates inside (or under) any element
+      // marked [data-lenis-prevent], return true so Lenis does NOT call
+      // preventDefault on it. That lets the browser scroll that element
+      // natively — wheel, trackpad momentum, and touch all work.
+      // This does NOT depend on importing lenis.css, unlike the bare
+      // data-lenis-prevent attribute handling, so it is reliable here.
+      prevent: (node) => {
+        return node?.closest?.('[data-lenis-prevent]') != null
+      },
     })
 
     lenisInstance = lenis

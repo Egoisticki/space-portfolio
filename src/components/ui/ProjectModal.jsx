@@ -44,28 +44,35 @@ export default function ProjectModal({ project, projects, onClose, onNavigate })
     }
   }, [currentIndex, projects, onNavigate])
 
+  // Keyboard: ESC / arrow navigation
   useEffect(() => {
-    const onKey = (event) => {
-      if (event.key === 'Escape') onClose()
-      if (event.key === 'ArrowLeft') handlePrev()
-      if (event.key === 'ArrowRight') handleNext()
+    const onKey = (e) => {
+      if (e.key === 'Escape') onClose()
+      if (e.key === 'ArrowLeft') handlePrev()
+      if (e.key === 'ArrowRight') handleNext()
     }
-
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [onClose, handlePrev, handleNext])
 
+  // Body scroll lock + Lenis pause
   useEffect(() => {
     const lenis = getLenis()
+    // Lock BOTH html and body — locking body alone leaves <html> scrollable,
+    // which is what lets overscroll leak to the page behind the modal.
+    const prevHtml = document.documentElement.style.overflow
+    const prevBody = document.body.style.overflow
+    document.documentElement.style.overflow = 'hidden'
     document.body.style.overflow = 'hidden'
-    if (lenis && typeof lenis.stop === 'function') lenis.stop()
-
+    if (lenis?.stop) lenis.stop()
     return () => {
-      document.body.style.overflow = ''
-      if (lenis && typeof lenis.start === 'function') lenis.start()
+      document.documentElement.style.overflow = prevHtml
+      document.body.style.overflow = prevBody
+      if (lenis?.start) lenis.start()
     }
   }, [])
 
+  // Reset image error when project changes
   useEffect(() => {
     setHeroImageError(false)
   }, [project.image])
@@ -73,34 +80,45 @@ export default function ProjectModal({ project, projects, onClose, onNavigate })
   const slideVariants = {
     enter: (dir) => ({ x: dir > 0 ? 40 : -40, opacity: 0 }),
     center: { x: 0, opacity: 1 },
-    exit: (dir) => ({ x: dir > 0 ? -40 : 40, opacity: 0 }),
+    exit:  (dir) => ({ x: dir > 0 ? -40 : 40, opacity: 0 }),
   }
 
   return (
+    /* ── Layer 1: fullscreen backdrop ── */
     <motion.div
-      className="fixed inset-0 z-[90] overflow-hidden bg-[#03030a]/82 backdrop-blur-2xl"
+      className="fixed inset-0 z-[100] bg-[#03030a]/80 backdrop-blur-xl"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      onPointerDown={(event) => {
-        if (event.target === event.currentTarget) onClose()
-      }}
+      onPointerDown={(e) => { if (e.target === e.currentTarget) onClose() }}
     >
-      <div className="flex h-screen items-center justify-center p-6">
+      {/* ── Layer 2: centering wrapper ── */}
+      <div className="flex h-full items-center justify-center p-4 md:p-6">
+
+        {/* ── Layer 3: modal shell — fixed size, clips children ── */}
         <motion.div
-          className="h-[90vh] w-full max-w-4xl overflow-hidden rounded-[28px] bg-transparent shadow-lg flex flex-col"
+          className="
+            flex h-[90vh] max-h-[90vh] w-full max-w-4xl
+            flex-col overflow-hidden
+            rounded-[28px] border border-white/10 bg-[#070711]
+            shadow-2xl
+          "
           initial={{ y: 80, opacity: 0, scale: 0.98 }}
           animate={{ y: 0, opacity: 1, scale: 1 }}
           exit={{ y: 80, opacity: 0, scale: 0.98 }}
           transition={{ type: 'spring', stiffness: 220, damping: 28 }}
-          onClick={(event) => event.stopPropagation()}
+          onClick={(e) => e.stopPropagation()}
         >
-          <div className="sticky top-0 z-10 flex shrink-0 items-center justify-between border-b border-white/8 px-5 py-4 md:px-6 bg-gradient-to-b from-black/40 to-transparent">
+
+          {/* ── Header: shrink-0 so it never compresses ── */}
+          <div className="shrink-0 flex items-center justify-between border-b border-white/8 px-5 py-4 md:px-6 bg-[#070711]">
             <div>
               <p className="font-mono-custom text-[10px] uppercase tracking-[0.22em] text-cyan/60">
                 Case {String(currentIndex + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
               </p>
-              <h2 className="mt-1 text-xl font-semibold text-star-white md:text-2xl">{project.title}</h2>
+              <h2 className="mt-1 text-xl font-semibold text-star-white md:text-2xl">
+                {project.title}
+              </h2>
             </div>
 
             <div className="flex items-center gap-2">
@@ -136,7 +154,11 @@ export default function ProjectModal({ project, projects, onClose, onNavigate })
             </div>
           </div>
 
-          <div className="flex-1 min-h-0 overflow-y-auto relative z-10">
+          {/* ── Scrollable content: THE only scrolling element ── */}
+          <div
+            className="flex-1 min-h-0 overflow-y-auto overscroll-contain"
+            data-lenis-prevent
+          >
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={project.id}
@@ -147,6 +169,7 @@ export default function ProjectModal({ project, projects, onClose, onNavigate })
                 exit="exit"
                 transition={{ duration: 0.25 }}
               >
+                {/* Hero image / placeholder */}
                 <div className="relative h-56 overflow-hidden md:h-72">
                   {!hasHeroImage && (
                     <div
@@ -168,11 +191,13 @@ export default function ProjectModal({ project, projects, onClose, onNavigate })
                       src={project.image}
                       alt={project.imageAlt || project.title}
                       loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover object-center opacity-100"
+                      className="absolute inset-0 h-full w-full object-cover object-center"
                       onError={() => setHeroImageError(true)}
                     />
                   )}
-                  {!hasHeroImage && <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-30`} />}
+                  {!hasHeroImage && (
+                    <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-30`} />
+                  )}
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
 
                   <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-6">
@@ -191,12 +216,15 @@ export default function ProjectModal({ project, projects, onClose, onNavigate })
                   </div>
                 </div>
 
+                {/* Tab bar */}
                 <div className="border-b border-white/8 px-5 md:px-6">
                   <div className="flex gap-1">
                     {['overview', 'features', 'stack'].map((tab) => (
                       <button
                         key={tab}
-                        className={`relative px-4 py-4 text-sm font-semibold capitalize transition ${activeTab === tab ? 'text-star-white' : 'text-text-dim hover:text-text-primary'}`}
+                        className={`relative px-4 py-4 text-sm font-semibold capitalize transition ${
+                          activeTab === tab ? 'text-star-white' : 'text-text-dim hover:text-text-primary'
+                        }`}
                         onClick={() => setActiveTab(tab)}
                       >
                         {tab}
@@ -211,6 +239,7 @@ export default function ProjectModal({ project, projects, onClose, onNavigate })
                   </div>
                 </div>
 
+                {/* Tab content */}
                 <div className="p-5 md:p-6">
                   <AnimatePresence mode="wait">
                     {activeTab === 'overview' && (
@@ -226,7 +255,6 @@ export default function ProjectModal({ project, projects, onClose, onNavigate })
                         </p>
                       </motion.div>
                     )}
-
                     {activeTab === 'features' && (
                       <motion.div
                         key="features"
@@ -237,14 +265,16 @@ export default function ProjectModal({ project, projects, onClose, onNavigate })
                         <p className="section-eyebrow">What it includes</p>
                         <div className="mt-5 grid gap-3">
                           {(project.features || []).map((feature) => (
-                            <div key={feature} className="rounded-2xl border border-white/8 bg-white/[0.03] p-4 text-text-primary">
+                            <div
+                              key={feature}
+                              className="rounded-2xl border border-white/8 bg-white/[0.03] p-4 text-text-primary"
+                            >
                               {feature}
                             </div>
                           ))}
                         </div>
                       </motion.div>
                     )}
-
                     {activeTab === 'stack' && (
                       <motion.div
                         key="stack"
@@ -263,6 +293,7 @@ export default function ProjectModal({ project, projects, onClose, onNavigate })
                   </AnimatePresence>
                 </div>
 
+                {/* Footer links */}
                 <div className="flex flex-col gap-3 border-t border-white/8 p-5 sm:flex-row md:p-6">
                   <a
                     href={project.liveUrl}
@@ -284,7 +315,11 @@ export default function ProjectModal({ project, projects, onClose, onNavigate })
               </motion.div>
             </AnimatePresence>
           </div>
+          {/* end scrollable */}
+
         </motion.div>
+        {/* end modal shell */}
+
       </div>
     </motion.div>
   )
