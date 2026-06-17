@@ -450,140 +450,6 @@ tags: ["Open Minds Club", "React", "Events", "Community"],
 ]
 
 export const blogPosts = [
-// Place real blog/feed images in public/blog/ and reference them as /blog/file-name.jpg.
-// Missing images should be handled gracefully by the Blog component with a premium placeholder.
-{
-id: "pexelis-2026",
-type: "Event",
-title: "Organizing and building PEXELIS Hackathon 2026",
-date: "February 2026",
-excerpt:
-"Serving as Organizer and Co-Main Developer for PEXELIS Hackathon 2026.",
-content: [
-"I had the privilege of serving as Organizer and Co-Main Developer for PEXELIS Hackathon 2026.",
-"This role allowed me to combine event coordination, leadership, and software engineering to deliver a high-impact experience for participants.",
-"On the technical side, I helped architect and build the official website using React and Vite, focusing on performance, modularity, and user experience.",
-],
-tags: ["Open Minds Club", "Hackathon", "React", "Community"],
-image: "/blog/pexelis-2026.jpg",
-imageAlt: "PEXELIS Hackathon 2026",
-link: "https://pexelis.openmindsclub.net/",
-},
-{
-id: "bea-internship-platform",
-type: "Project Note",
-title: "Digitizing administrative workflows during my BEA internship",
-date: "Jan 2025 — Jun 2025",
-excerpt:
-"A full-stack internship project focused on correspondence, leave workflows, role-based access, and real-time updates.",
-content: [
-"During my internship at BEA, I worked on a full-stack enterprise platform to digitize internal correspondence and employee leave workflows.",
-"The project strengthened my backend architecture, role-based access control, PostgreSQL modeling, and real-time notification experience.",
-],
-tags: ["BEA", "Spring Boot", "Next.js", "Enterprise"],
-image: "/blog/bea-internship.jpg",
-imageAlt: "BEA administrative platform",
-link: "https://bea-gestion.netlify.app/login",
-},
-{
-id: "hypertempnet-research",
-type: "Blog",
-title: "HyperTempNet: crop mapping with Sentinel-2 time series",
-date: "2025",
-excerpt:
-"Research notes from my deep learning project on agricultural crop classification using satellite imagery and environmental covariates.",
-content: [
-"HyperTempNet explores automatic crop classification from multitemporal Sentinel-2 data.",
-"The project reproduces MCTNet, evaluates environmental covariate integration, and proposes a new architecture using SpectralSE, DAPSF, FiLM conditioning, HyperNet, and LTAE.",
-"The work helped me connect deep learning research with practical remote-sensing challenges such as class imbalance and regional variability.",
-],
-tags: ["PyTorch", "Remote Sensing", "Deep Learning", "Research"],
-image: "/blog/hypertempnet.jpg",
-imageAlt: "Satellite crop mapping and neural network visualization",
-link: "https://github.com/Egoisticki/project-ReseauNeur",
-},
-{
-id: "2mp-mission-order-system",
-type: "Achievement",
-title: "Replacing paper mission orders at 2MP Industry",
-date: "2024",
-excerpt:
-"A practical enterprise system that moved mission orders from paper-based processing to digital workflows.",
-content: [
-"At 2MP Industry, I designed and developed a custom internal platform for mission order management.",
-"The system introduced digital creation, validation, tracking, PDF generation, secure archiving, and administrative monitoring.",
-"This project taught me how much software quality depends on understanding the workflow before writing code.",
-],
-tags: ["2MP Industry", "Enterprise", "Workflow", "PDF"],
-image: "/blog/2mp-mission-orders.jpg",
-imageAlt: "2MP Industry mission order platform",
-link: "",
-},
-{
-id: "building-charikti",
-type: "Project Note",
-title: "Building Charikti as a business management SaaS",
-date: "2026 — Present",
-excerpt:
-"Notes from building Charikti, a SaaS platform designed to simplify company management and internal workflows.",
-content: [
-"Charikti is my long-term SaaS project focused on simplifying business management for companies.",
-"The product direction includes requests, teams, workflows, control, reports, and administrative management.",
-"I am using the project to improve my product thinking, system architecture, and ability to turn real business problems into software.",
-],
-tags: ["Charikti", "SaaS", "Business Systems", "Product"],
-image: "/blog/charikti.jpg",
-imageAlt: "Charikti business management SaaS branding",
-link: "",
-},
-{
-id: "ai-assisted-development",
-type: "Blog",
-title: "How I use AI-assisted development to ship faster",
-date: "Coming soon",
-excerpt:
-"Notes on using Claude, GPT, and Codex as a force multiplier while still making the technical decisions myself.",
-content: [
-"AI tools help me move faster from idea to implementation, but the important part is still knowing what to build, how to structure it, and how to verify the result.",
-"My workflow combines product thinking, full-stack development, and AI-assisted iteration.",
-],
-tags: ["AI", "Workflow", "Development"],
-image: "/blog/ai-assisted-development.jpg",
-imageAlt: "AI-assisted development workflow",
-link: "",
-},
-{
-id: "imprimerie-calculator",
-type: "Project Note",
-title: "Designing a desktop calculator for printing workflows",
-date: "2025",
-excerpt:
-"A local business tool for estimating paper layouts, production resources, and printing costs.",
-content: [
-"Imprimerie Calculator is a desktop application built for practical printing-house workflows.",
-"The project focuses on layout calculation, paper usage estimation, plate requirements, color configurations, and production cost planning.",
-],
-tags: ["Python", "PySide6", "Desktop App", "Business Tool"],
-image: "/blog/imprimerie-calculator.jpg",
-imageAlt: "Printing calculator desktop application",
-link: "",
-},
-{
-id: "thyroid-ai-platform",
-type: "Project Note",
-title: "Building a medical AI platform for thyroid nodule prediction",
-date: "2024",
-excerpt:
-"A Flask and PyTorch project combining medical image upload, model inference, and segmentation.",
-content: [
-"This project combines healthcare, computer vision, and web development.",
-"It integrates trained deep learning models into a Flask application for thyroid nodule prediction and image segmentation.",
-],
-tags: ["Healthcare AI", "Flask", "PyTorch", "Computer Vision"],
-image: "/blog/thyroid-ai.jpg",
-imageAlt: "Medical AI platform for thyroid nodule prediction",
-link: "",
-},
 
 {
   id: "pexelis-hackathon-2026",
@@ -616,4 +482,115 @@ link: "",
     "https://www.linkedin.com/posts/mohamed-abdallah-hamidat_openmindclub-pexelis-hackathon-ugcPost-7430606022697754624-_V6S/",
   featured: true
 },
+{
+  id: "ideathon-open-minds-2025",
+  type: "Event",
+  title: "Organizer at IDEATHON by Open Minds Club",
+  date: "2025",
+  author: "Mohamed Hamidat",
+  excerpt:
+    "Contributed as an organizer for IDEATHON by Open Minds Club, helping create an environment that encourages innovation and collaboration.",
+
+  content: [
+    "I contributed as an Organizer in the IDEATHON event organized by Open Minds Club.",
+    "Being part of the organizing team strengthened my skills in teamwork, coordination, and event management while supporting an environment that encourages innovation, creativity, and problem-solving.",
+    "This experience taught me how technical communities are built and how impactful events rely on strong collaboration and organization.",
+    "I look forward to contributing to more initiatives that bring students and technology together."
+  ],
+
+  tags: [
+    "Open Minds Club",
+    "IDEATHON",
+    "Event Organization",
+    "Leadership",
+    "Community"
+  ],
+
+  image: "/blog/ideathon-omc.png",
+
+  gallery: [
+    "/blog/ideathon-omc.png",
+    "/blog/ideathon-certificate.png"
+  ],
+
+  link:
+    "https://www.linkedin.com/posts/mohamed-abdallah-hamidat_ideathon-openmindsclub-eventorganization-activity-7409592367529291777-2xKg?utm_source=share&utm_medium=member_ios",
+
+  featured: true
+},
+{
+  id: "usthb-graduation-bea",
+  type: "Achievement",
+  title: "Graduating in Computer Science and Delivering the BEA Project",
+  date: "Jun 2025",
+  author: "Mohamed Hamidat",
+
+  excerpt:
+    "Graduated with a Bachelor's degree in Computer Science from USTHB while delivering a full-stack enterprise platform in collaboration with Banque Extérieure d'Algérie.",
+
+  content: [
+    "I officially graduated with a Bachelor's degree in Computer Science from USTHB.",
+    "As our final-year project, our team developed a full-stack platform for managing administrative correspondence, leave requests, and employee absences in collaboration with Banque Extérieure d'Algérie (BEA).",
+    "This project allowed me to apply software engineering principles in a real professional environment while strengthening my skills in backend development, architecture, teamwork, and project delivery.",
+    "I am grateful to my teammates, supervisors, and BEA for providing an enriching and impactful experience."
+  ],
+
+  tags: [
+    "USTHB",
+    "Graduation",
+    "Computer Science",
+    "BEA",
+    "Full-Stack",
+    "Enterprise Software"
+  ],
+
+  image: "/blog/usthb-graduation.png",
+
+  gallery: [
+    "/blog/usthb-graduation.png",
+    "/blog/bea-report-cover.png"
+  ],
+
+  link:
+    "https://www.linkedin.com/posts/mohamed-abdallah-hamidat_usthb-license-computerscience-activity-7337911444799115266-nx5e",
+
+  featured: true
+},
+{
+  id: "regional-judo-referee-2025",
+  type: "Achievement",
+  title: "Official Referee at Regional Judo Championships",
+  date: "Feb 2025",
+  author: "Mohamed Hamidat",
+
+  excerpt:
+    "Served as an official referee during regional judo championships, combining discipline, fairness, and leadership in competitive sports.",
+
+  content: [
+    "I had the honor of officiating as a referee at the Regional Judo Championships held in Blida Province during February 2025.",
+    "The events included both individual and team competitions across junior and senior categories.",
+    "Being a referee requires concentration, integrity, quick decision-making, and responsibility under pressure.",
+    "Beyond software engineering, judo has helped shape my discipline, leadership, and commitment to continuous improvement."
+  ],
+
+  tags: [
+    "Judo",
+    "Referee",
+    "Leadership",
+    "Discipline",
+    "Sports"
+  ],
+
+  image: "/blog/judo-competition.png",
+
+  gallery: [
+    "/blog/judo-referee-2025.png",
+    "/blog/judo-competition.png"
+  ],
+
+  link:
+    "https://www.linkedin.com/posts/mohamed-abdallah-hamidat_judo-activity-7294052178518839296-Ltxn",
+
+  featured: false
+}
 ]
