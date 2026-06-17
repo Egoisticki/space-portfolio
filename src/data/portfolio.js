@@ -59,11 +59,11 @@ portrait: "/profile.jpg",
 portraitAlt: "Portrait of Mohamed Hamidat",
 portraitFallback: "Add src/assets/profile.jpg",
 description: [
-"I’m a full-stack developer and Master’s student focused on building SaaS platforms, enterprise systems, and AI-assisted tools.",
-"I care about turning real workflows into clean, reliable products — from interface design to backend architecture and deployment.",
+"I’m a full-stack developer and Master’s student focused on building SaaS platforms, enterprise systems, and AI tools.",
+"I care about turning real workflows into clean, reliable products from interface design to backend architecture and deployment.",
 ],
 focus:
-"Currently focused on Charikti, enterprise business software, and AI-assisted development workflows.",
+"Currently focused on Charikti, enterprise business software, and development workflows.",
 chips: [
 "SaaS Platforms",
 "Enterprise Systems",
@@ -77,7 +77,7 @@ currently: [
 "Building Charikti",
 "Studying AI at USTHB",
 "Contributing to Open Minds Club",
-"Exploring AI-assisted development",
+"Exploring AI and Deep Learning",
 ],
 }
 
