@@ -1,6 +1,7 @@
 import { useEffect, useCallback, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { getLenis } from '../../hooks/useLenis'
+import { getProjectActions } from '../../utils/projectActions'
 
 function Pill({ children, color = '#94a3b8' }) {
   return (
@@ -28,6 +29,7 @@ export default function ProjectModal({ project, projects, onClose, onNavigate })
   const [activeTab, setActiveTab] = useState('overview')
   const [heroImageError, setHeroImageError] = useState(false)
   const currentIndex = projects.findIndex((p) => p.id === project.id)
+  const { hasPublicRepo, hasLiveDemo, hasActions } = getProjectActions(project)
   const hasHeroImage = Boolean(project.image) && !heroImageError
 
   const handlePrev = useCallback(() => {
@@ -294,24 +296,30 @@ export default function ProjectModal({ project, projects, onClose, onNavigate })
                 </div>
 
                 {/* Footer links */}
-                <div className="flex flex-col gap-3 border-t border-white/8 p-5 sm:flex-row md:p-6">
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex min-h-11 items-center justify-center rounded-full border border-white/12 bg-white/[0.045] px-5 text-sm font-semibold text-star-white transition hover:bg-white/[0.075]"
-                  >
-                    Live demo
-                  </a>
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex min-h-11 items-center justify-center rounded-full px-5 text-sm font-semibold text-text-dim transition hover:text-star-white"
-                  >
-                    Source code
-                  </a>
-                </div>
+                {hasActions && (
+                  <div className="flex flex-col gap-3 border-t border-white/8 p-5 sm:flex-row md:p-6">
+                    {hasLiveDemo && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex min-h-11 items-center justify-center rounded-full border border-white/12 bg-white/[0.045] px-5 text-sm font-semibold text-star-white transition hover:bg-white/[0.075]"
+                      >
+                        Live demo
+                      </a>
+                    )}
+                    {hasPublicRepo && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex min-h-11 items-center justify-center rounded-full px-5 text-sm font-semibold text-text-dim transition hover:text-star-white"
+                      >
+                        Source code
+                      </a>
+                    )}
+                  </div>
+                )}
               </motion.div>
             </AnimatePresence>
           </div>

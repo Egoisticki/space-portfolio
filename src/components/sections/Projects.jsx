@@ -82,9 +82,7 @@ export default function Projects() {
 
         <div className="mt-14 flex items-center gap-4 text-center">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-white/5" />
-          <span className="font-mono-custom text-[10px] uppercase tracking-[0.22em] text-text-dim">
-            {projects.length} product builds
-          </span>
+          
           <div className="h-px flex-1 bg-gradient-to-l from-transparent via-white/10 to-white/5" />
         </div>
       </div>

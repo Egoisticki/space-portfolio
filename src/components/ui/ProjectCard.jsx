@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
+import { getProjectActions } from '../../utils/projectActions'
 
 const TECH_COLORS = {
   React: '#61dafb',
@@ -68,6 +69,7 @@ function ProjectImageFallback({ project }) {
 }
 
 export default function ProjectCard({ project, index, onOpenModal }) {
+  const { hasPublicRepo, hasLiveDemo, hasActions } = getProjectActions(project)
   const shouldReduceMotion = useReducedMotion()
   const [imageError, setImageError] = useState(false)
   const hasImage = Boolean(project.image) && !imageError
@@ -173,15 +175,17 @@ export default function ProjectCard({ project, index, onOpenModal }) {
             </svg>
           </button>
 
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-medium text-text-dim transition hover:text-star-white"
-            onClick={(event) => event.stopPropagation()}
-          >
-            Source
-          </a>
+          {hasPublicRepo && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-text-dim transition hover:text-star-white"
+              onClick={(event) => event.stopPropagation()}
+            >
+              Source
+            </a>
+          )}
         </div>
       </div>
     </motion.article>
